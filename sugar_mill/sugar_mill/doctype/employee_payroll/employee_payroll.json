@@ -21,31 +21,37 @@
    "label": "From Date"
   },
   {
+   "default": "0",
    "fieldname": "basic_c",
    "fieldtype": "Currency",
    "label": "Basic"
   },
   {
+   "default": "0",
    "fieldname": "hra_c",
    "fieldtype": "Currency",
    "label": "HRA"
   },
   {
+   "default": "0",
    "fieldname": "personal_pay_c",
    "fieldtype": "Currency",
    "label": "Personal Pay"
   },
   {
+   "default": "0",
    "fieldname": "fixed_allowance_c",
    "fieldtype": "Currency",
    "label": "Fixed allowance"
   },
   {
+   "default": "0",
    "fieldname": "dearness_allowance_c",
    "fieldtype": "Currency",
    "label": "Dearness Allowance"
   },
   {
+   "default": "0",
    "fieldname": "medical_allowance_c",
    "fieldtype": "Currency",
    "label": "Medical Allowance"
@@ -54,7 +60,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-08-23 15:07:44.859896",
+ "modified": "2023-08-28 20:30:22.644779",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Employee Payroll",

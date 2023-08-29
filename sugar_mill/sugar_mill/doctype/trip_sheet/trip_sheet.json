@@ -18,6 +18,7 @@
   "branch",
   "column_break_vvz7t",
   "plot_no",
+  "plat_no_id",
   "column_break_4xh55",
   "farmer_code",
   "section_break_uoiyk",
@@ -192,6 +193,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "plot_no.route",
    "fieldname": "route_name",
    "fieldtype": "Link",
    "label": "Route Name ",
@@ -488,12 +490,20 @@
    "fieldname": "circle_office",
    "fieldtype": "Data",
    "label": "Circle Office"
+  },
+  {
+   "fetch_from": "plot_no.id",
+   "fieldname": "plat_no_id",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Plat No ID",
+   "options": "Cane Master"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-16 10:58:14.755702",
+ "modified": "2023-08-28 17:26:11.169139",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Trip Sheet",

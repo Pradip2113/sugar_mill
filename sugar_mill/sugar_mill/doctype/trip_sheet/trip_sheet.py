@@ -34,6 +34,11 @@ class TripSheet(Document):
 				self.transporter_code = j.name
 				self.transporter = j.transporter_code
 				self.gang_type = j.gang_type
+		if (self.cartno == 0):
+			self.transporter_code = None
+			self.vehicle_type = None
+			self.transporter_name = None
+			self.transporter = None
 				
 				
 	def before_save(self):

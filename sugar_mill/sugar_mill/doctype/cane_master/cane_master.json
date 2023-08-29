@@ -198,6 +198,7 @@
    "options": "Taluka"
   },
   {
+   "fetch_from": "route.district",
    "fieldname": "district",
    "fieldtype": "Link",
    "label": "District (\u091c\u093f\u0932\u094d\u0939\u093e)",
@@ -435,7 +436,7 @@
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-24 12:53:09.858602",
+ "modified": "2023-08-28 17:06:24.053113",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Cane Master",

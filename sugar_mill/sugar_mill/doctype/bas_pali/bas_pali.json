@@ -11,16 +11,12 @@
   "column_break_yizxg",
   "branch",
   "column_break_oiie1",
-  "circle",
   "column_break_ppclw",
   "column_break_5yray",
   "from_date",
   "column_break_rqmmv",
   "to_date",
   "column_break_pufob",
-  "column_break_pqthx",
-  "section_break_5qx7l",
-  "village_list",
   "section_break_vbdmi",
   "transporter_table"
  ],
@@ -46,12 +42,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "circle",
-   "fieldtype": "Link",
-   "label": "Circle Office",
-   "options": "Circle Office"
-  },
-  {
    "fieldname": "column_break_ppclw",
    "fieldtype": "Column Break"
   },
@@ -61,7 +51,7 @@
   },
   {
    "fieldname": "from_date",
-   "fieldtype": "Date",
+   "fieldtype": "Datetime",
    "label": " From Date"
   },
   {
@@ -70,26 +60,12 @@
   },
   {
    "fieldname": "to_date",
-   "fieldtype": "Date",
+   "fieldtype": "Datetime",
    "label": "To Date"
   },
   {
    "fieldname": "column_break_pufob",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_pqthx",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_5qx7l",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "village_list",
-   "fieldtype": "Table",
-   "label": "Villages",
-   "options": "Child Village List"
   },
   {
    "fieldname": "section_break_vbdmi",
@@ -104,7 +80,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-03 16:33:55.654991",
+ "modified": "2023-08-28 15:06:20.086310",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Bas Pali",
