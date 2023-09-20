@@ -97,6 +97,14 @@ frappe.ui.form.on('Cane Inward Slip', {
 	}
   });
 
+  frappe.ui.form.on('Cane Inward Slip', {
+	after_save: function(frm) {frm.call({
+		method:'call_indicator',//function name defined in python
+			doc: frm.doc, //current document
+		});
+		
+	}
+});
 // frappe.ui.form.on("Cane Inward Slip", {
 //     onload: function(frm) {
 //         if (!frm.doc.slip_no) {

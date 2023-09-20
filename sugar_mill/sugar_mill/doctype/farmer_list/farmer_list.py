@@ -8,7 +8,7 @@ class FarmerList(Document):
 	@frappe.whitelist()    
 	def fetchbranch(self):
 		for i in self.bank_details:
-			doc1=frappe.db.get_list('Bank Master',filters={'bank_name':i.bank_name,"branch":i.branch},fields={'name','bank_name','branch','ifsc_code'})
+			doc1=frappe.db.get_list('Bank Master',filters={'bank_name':i.bank_name},fields={'name','bank_name','branch','ifsc_code'})
 			for d in doc1:
 				i.branchifsc_code = d.ifsc_code
 	
@@ -127,8 +127,25 @@ class FarmerList(Document):
 					checked_row_3 = d
 				else:
 					d.transporter = 0 
-  
-  
+     
+@frappe.whitelist()
+def vendor_code(docname):
+    doc = frappe.get_doc("Farmer List", docname)
+    field_value_exist = frappe.get_value("Farmer List", doc.name, 'existing_supplier_code')
+    if field_value_exist:
+        # Field has a value
+        return "Field has a value"
+    else:
+        field_name = 'existing_supplier_code'
+        field_value = doc.name[3:]
+        frappe.db.set_value('Farmer List', doc.name, field_name, field_value)
+        
+        # def reload_doc():
+        #     frappe.get_doc('Farmer List', doc.name).reload()
+        
+        # frappe.enqueue(reload_doc, queue='default', timeout=1)
+        return "Field value updated"
+ 
 	
   
 	# @frappe.whitelist()

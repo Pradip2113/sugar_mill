@@ -124,20 +124,28 @@ frappe.ui.form.on('Agriculture Development', {
 	
 	},
     refresh(frm){
-        debugger
         // frm.trigger("make_delivery_challan")
         frm.trigger("make_sales_order")
     },
     make_sales_order(frm){
         // if(frm.doc.docstatus === 1)
         // {
-            frm.add_custom_button(__("Sales Order"),() => {
-                frappe.model.open_mapped_doc({
-                    method:"sugar_mill.sugar_mill.doctype.agriculture_development.agriculture_development.make_sales_order",
-                    frm:frm
-                })
-            },__("Make")
-            )
+            
+                frm.add_custom_button(__("Sales Order"),() => {
+                    if (frm.doc.sales_type == "Fertilizer")
+                        {
+                            frappe.model.open_mapped_doc({
+                            method:"sugar_mill.sugar_mill.doctype.agriculture_development.agriculture_development.make_sales_order",
+                            frm:frm
+                    })}
+                    if (frm.doc.sales_type != "Fertilizer")
+                    {
+                        frappe.model.open_mapped_doc({
+                        method:"sugar_mill.sugar_mill.doctype.agriculture_development.agriculture_development.make_nofarti",
+                        frm:frm
+                })}
+                },__("Make")
+                )
         // }
     //     frm.add_custom_button(__("Delivery Challan"),() => {
     //     debugger
@@ -176,3 +184,33 @@ frappe.ui.form.on('Agriculture Development', {
         
 //     }
 // });
+
+
+/*************************************** Vikas Work *************************************************************/
+// frappe.ui.form.on('Agriculture Development', {
+//     sales_type: function(frm) {
+//         // frm.clear_table("agriculture_development_item")
+// 		frm.refresh_field('agriculture_development_item')
+//         frm.call({
+//             method:'hide_basel_column',//function name defined in python
+//             doc: frm.doc, //current document
+//         });
+        
+//     }
+// });
+
+frappe.ui.form.on('Agriculture Development', {
+    refresh: function (frm) {
+        frm.fields_dict['agriculture_development_item'].grid.get_field('basel').get_query = function (doc) {
+            if (doc.sales_type === 'Fartilizer') {
+                return { hidden: 1 };
+            }
+        };
+    }
+});
+
+
+
+
+
+/*************************************** Vikas Work *************************************************************/

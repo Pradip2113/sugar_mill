@@ -61,7 +61,8 @@
   "state",
   "data_47",
   "my_location",
-  "amended_from"
+  "amended_from",
+  "vendor_code"
  ],
  "fields": [
   {
@@ -432,12 +433,18 @@
    "fieldname": "crop_sample_id",
    "fieldtype": "Data",
    "label": "Crop Sample ID"
+  },
+  {
+   "fetch_from": "id.vendor_code",
+   "fieldname": "vendor_code",
+   "fieldtype": "Data",
+   "label": "vendor code"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-08-03 10:24:23.966619",
+ "modified": "2023-09-20 11:09:46.748640",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Crop Harvesting",

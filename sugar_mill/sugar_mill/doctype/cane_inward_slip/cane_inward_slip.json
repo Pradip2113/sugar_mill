@@ -77,11 +77,11 @@
   "uin",
   "slip_boy",
   "cane_inward_no",
-  "rfid_tag",
   "section_break_sw406",
   "pending_slip",
   "ip_of_indicator",
-  "port_no_of_indicator"
+  "port_no_of_indicator",
+  "rfid_tag"
  ],
  "fields": [
   {
@@ -500,7 +500,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-05 14:03:44.497507",
+ "modified": "2023-09-05 13:01:11.937642",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Cane Inward Slip",

@@ -22,9 +22,9 @@
   "mobile_no",
   "company_name",
   "is_kisan_card",
+  "village",
   "farmer_plot_details_section",
   "route",
-  "column_break_k9hwf",
   "area",
   "column_break_17",
   "circle_office",
@@ -341,9 +341,9 @@
    "fetch_from": "route.village",
    "fieldname": "area",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Village (\u0917\u093e\u0935)",
-   "options": "Village",
-   "reqd": 1
+   "options": "Village"
   },
   {
    "fieldname": "crop_name",
@@ -413,10 +413,6 @@
    "options": "Yes\nNo"
   },
   {
-   "fieldname": "column_break_k9hwf",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "column_break_tfoza",
    "fieldtype": "Column Break"
   },
@@ -431,12 +427,19 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Vendor Code"
+  },
+  {
+   "fetch_from": "grower_code.village",
+   "fieldname": "village",
+   "fieldtype": "Link",
+   "label": "Village",
+   "options": "Village"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-28 17:06:24.053113",
+ "modified": "2023-09-20 10:05:06.974427",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Cane Master",

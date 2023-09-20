@@ -51,7 +51,7 @@ class CaneInwardSlip(Document):
 
 			num_str = f"{data}\r\n"
 			client_socket.send(num_str.encode('utf-8'))
-			frappe.msgprint(f"Sent: {num_str}")
+			
 
 			# Wait for a short time before sending the next number
 				# time.sleep(1)
@@ -80,8 +80,9 @@ class CaneInwardSlip(Document):
 		# # frappe.msgprint(str(struct.pack('>H',len(encoded_data)) + encoded_data))
 		# time.sleep(2)
 		# s.close()
-	
-
+	@frappe.whitelist()
+	def call_indicator(self):
+		self.send_to_data(3)
 
 	@frappe.whitelist()
 	def vivo(self):
@@ -101,7 +102,7 @@ class CaneInwardSlip(Document):
 		for n in doc1:
 			n.token_number = n.token_number + 1
 			frappe.db.set_value("Branch", n.name, "token_number",n.token_number)
-			self.send_to_data(2)
+			self.send_to_data(3)
 	# @frappe.whitelist()
 	# def get_reading(self):
 	# 	user=  frappe.get_all("RFID Master Setting",
@@ -179,7 +180,7 @@ class CaneInwardSlip(Document):
 				self.harvester_name=g.harvester_name
 				frappe.msgprint(f"RFID Tag matches with vendor ")
 				found_rfid_tag = True
-				self.send_to_data(3)
+				self.send_to_data(2)
 				break
 
 		if not found_rfid_tag:

@@ -24,3 +24,17 @@ frappe.ui.form.on('Child Slip Boy Assignment Circle Office', {
 
 	},
 });
+
+
+
+
+frappe.ui.form.on('Overseer Assignment', {
+	button: function(frm) {
+
+		frm.call({
+			method: 'amount',//function name defined in python
+			doc: frm.doc, //current document
+		});
+		
+	}
+});

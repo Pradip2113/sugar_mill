@@ -82,7 +82,8 @@
   "amended_from",
   "can_slip_flag",
   "cane_slip",
-  "circle_office"
+  "circle_office",
+  "vendor_code"
  ],
  "fields": [
   {
@@ -255,7 +256,7 @@
    "fieldname": "harvester_code",
    "fieldtype": "Link",
    "hidden": 1,
-   "label": "Harvester Code",
+   "label": "Harvester Code F",
    "options": "Farmer List"
   },
   {
@@ -432,7 +433,7 @@
    "fieldname": "harvester_code_h",
    "fieldtype": "Link",
    "hidden": 1,
-   "label": "Harvester Code",
+   "label": "Harvester",
    "options": "Farmer List"
   },
   {
@@ -498,12 +499,19 @@
    "hidden": 1,
    "label": "Plat No ID",
    "options": "Cane Master"
+  },
+  {
+   "fetch_from": "plot_no.vendor_code",
+   "fieldname": "vendor_code",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "vendor code"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-28 17:26:11.169139",
+ "modified": "2023-09-20 11:23:18.377929",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Trip Sheet",

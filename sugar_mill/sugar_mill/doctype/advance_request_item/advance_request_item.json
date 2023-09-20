@@ -6,7 +6,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "code_no",
+  "contract_id",
   "transporter_code",
   "name1",
   "vehicle_cart",
@@ -22,14 +22,6 @@
   "payment_status"
  ],
  "fields": [
-  {
-   "columns": 1,
-   "fieldname": "code_no",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Code No",
-   "options": "H and T Contract"
-  },
   {
    "columns": 2,
    "fetch_from": "code_no.transporter_name",
@@ -124,12 +116,21 @@
    "in_list_view": 1,
    "label": "Payment Status",
    "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "contract_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Code No",
+   "options": "H and T Contract",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-08-16 16:16:19.831744",
+ "modified": "2023-09-13 16:07:32.248264",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Advance Request item",

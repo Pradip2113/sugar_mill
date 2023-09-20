@@ -15,7 +15,8 @@
   "circle_office_table_os",
   "section_break_lpycy",
   "fieldman_table",
-  "slip_boy_table"
+  "slip_boy_table",
+  "button"
  ],
  "fields": [
   {
@@ -61,11 +62,16 @@
    "hidden": 1,
    "label": "Slip Boy table",
    "options": "Slip boy Under Fieldman"
+  },
+  {
+   "fieldname": "button",
+   "fieldtype": "Button",
+   "label": "button"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-08 20:45:40.670226",
+ "modified": "2023-09-06 12:51:31.097155",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Overseer Assignment",

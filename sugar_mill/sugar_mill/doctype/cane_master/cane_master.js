@@ -42,7 +42,7 @@ frappe.ui.form.on('Cane Master', {
 	        fetch('https://api.opencagedata.com/geocode/v1/json?q='+latitude+'+'+longitude+'&key=de1bf3be66b546b89645e500ec3a3a28')
 	         .then(response => response.json())
             .then(data => {
-                var city=data['results'][0].components.city;
+                var city=data['results'][0].formatted;
                 var state=data['results'][0].components.state;
 				var area=data['results'][0].components.area;
                 frm.set_value('city',city);

@@ -343,6 +343,7 @@
   {
    "fieldname": "bank_passbook",
    "fieldtype": "Attach",
+   "hidden": 1,
    "label": "Bank Passbook "
   },
   {
@@ -731,7 +732,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2023-08-24 10:04:48.362322",
+ "modified": "2023-08-31 14:53:15.569193",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Farmer List",

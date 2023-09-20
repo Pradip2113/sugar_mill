@@ -17,7 +17,8 @@
   "driver_name",
   "season",
   "h_t_cont",
-  "harvester_code"
+  "harvester_code",
+  "updated_issue"
  ],
  "fields": [
   {
@@ -93,12 +94,17 @@
    "fieldname": "harvester_code",
    "fieldtype": "Data",
    "label": "Harvester Code"
+  },
+  {
+   "fieldname": "updated_issue",
+   "fieldtype": "Date",
+   "label": "Updated Issue Date"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-07-28 13:19:47.166879",
+ "modified": "2023-09-08 14:13:34.166332",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Vehicle Registration item",
