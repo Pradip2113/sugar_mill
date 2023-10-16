@@ -22,6 +22,26 @@
 // });
 
 frappe.ui.form.on('Crop Sampling', {
+	average_brix: function(frm) {
+		frm.call({
+		method:'validation_for_Brix',//function name defined in python
+		doc: frm.doc, //current document
+		});
+		
+	}
+});
+
+frappe.ui.form.on('Crop Sampling', {
+	no_of_pairs: function(frm) {
+		frm.call({
+		method:'validation_for_Pairs',//function name defined in python
+		doc: frm.doc, //current document
+		});
+		
+	}
+});
+
+frappe.ui.form.on('Crop Sampling', {
     brix_top: function(frm) {
         frm.set_value('average_brix', (frm.doc.brix_top + frm.doc.brix_middle + frm.doc.brix_bottom)/3);
     },

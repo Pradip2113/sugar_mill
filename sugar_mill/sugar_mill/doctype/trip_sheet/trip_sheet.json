@@ -1,6 +1,6 @@
 {
  "actions": [],
- "autoname": "autoincrement",
+ "autoname": "format:{season}-{slip_no}",
  "creation": "2023-07-19 10:11:43.564977",
  "default_view": "List",
  "doctype": "DocType",
@@ -45,6 +45,7 @@
   "cartno",
   "column_break_pipgl",
   "transporter_code",
+  "old_transporter_code",
   "column_break_abhrl",
   "transporter",
   "transporter_name",
@@ -55,6 +56,7 @@
   "harvester_name",
   "section_break_hgkzi",
   "harvesting_code__ht",
+  "harvester_code_old",
   "column_break_m8fj4",
   "harvester_code_h",
   "harvester_name_h",
@@ -83,14 +85,16 @@
   "can_slip_flag",
   "cane_slip",
   "circle_office",
-  "vendor_code"
+  "vendor_code",
+  "bas_pali_flag"
  ],
  "fields": [
   {
    "fieldname": "season",
    "fieldtype": "Link",
    "label": "Season",
-   "options": "Season"
+   "options": "Season",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_9npn6",
@@ -100,7 +104,8 @@
    "fieldname": "branch",
    "fieldtype": "Link",
    "label": "Plant",
-   "options": "Branch"
+   "options": "Branch",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_vvz7t",
@@ -109,9 +114,9 @@
   {
    "fieldname": "slip_no",
    "fieldtype": "Int",
-   "hidden": 1,
    "label": "Slip No",
-   "precision": "0"
+   "precision": "0",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_uoiyk",
@@ -224,6 +229,7 @@
    "fieldtype": "Section Break"
   },
   {
+   "fetch_from": "transporter_code.vehicle_type",
    "fieldname": "vehicle_type",
    "fieldtype": "Link",
    "label": "Vehicle Type ",
@@ -244,6 +250,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "transporter_code.transporter_name",
    "fieldname": "transporter_name",
    "fieldtype": "Data",
    "label": "Transporter Name"
@@ -293,6 +300,7 @@
   },
   {
    "depends_on": "eval:doc.vehicle_type !='BULLOCK CART';",
+   "fetch_from": "transporter_code.vehicle_no",
    "fieldname": "vehicle_number",
    "fieldtype": "Data",
    "label": "Engine Number"
@@ -303,6 +311,7 @@
   },
   {
    "depends_on": "eval:doc.vehicle_type !='TRUCK' && doc.vehicle_type !='BULLOCK CART';",
+   "fetch_from": "transporter_code.trolly_1",
    "fieldname": "tolly_1",
    "fieldtype": "Data",
    "label": "Tolly 1"
@@ -313,6 +322,7 @@
   },
   {
    "depends_on": "eval:doc.vehicle_type !='TRUCK' && doc.vehicle_type !='BULLOCK CART';",
+   "fetch_from": "transporter_code.trolly_2",
    "fieldname": "tolly_2",
    "fieldtype": "Data",
    "label": "Tolly 2"
@@ -506,16 +516,35 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "vendor code"
+  },
+  {
+   "fetch_from": "transporter_code.old_no",
+   "fieldname": "old_transporter_code",
+   "fieldtype": "Data",
+   "label": "Transporter Code",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "harvesting_code__ht.old_no",
+   "fieldname": "harvester_code_old",
+   "fieldtype": "Data",
+   "label": "Harvester Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bas_pali_flag",
+   "fieldtype": "Int",
+   "label": "Bas Pali Flag"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-20 11:23:18.377929",
+ "modified": "2023-09-26 11:46:16.819581",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Trip Sheet",
- "naming_rule": "Autoincrement",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

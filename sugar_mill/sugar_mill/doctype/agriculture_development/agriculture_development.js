@@ -1,5 +1,4 @@
 
-
 frappe.ui.form.on('Agriculture Development', {
     refresh: function(frm) {
             frm.set_query("cane_registration_id", function() { // Replace with the name of the link field
@@ -15,7 +14,7 @@ frappe.ui.form.on('Agriculture Development', {
 
 frappe.ui.form.on('Agriculture Development', {
 	update(frm) {
-	    debugger
+	    // debugger
         frm.clear_table("agriculture_development_item")
 		frm.refresh_field("agriculture_development_item")
 	    var basel = "",preeathing ="",earth="",rainy="",ratoon1="",ratoon2="";
@@ -199,17 +198,103 @@ frappe.ui.form.on('Agriculture Development', {
 //     }
 // });
 
-frappe.ui.form.on('Agriculture Development', {
-    refresh: function (frm) {
-        frm.fields_dict['agriculture_development_item'].grid.get_field('basel').get_query = function (doc) {
-            if (doc.sales_type === 'Fartilizer') {
-                return { hidden: 1 };
-            }
-        };
+// frappe.ui.form.on('Agriculture Development', {
+//     refresh: function (frm) {
+//         frm.fields_dict['agriculture_development_item'].grid.get_field('basel').get_query = function (doc) {
+//             if (doc.sales_type === 'Fartilizer') {
+//                 return { hidden: 1 };
+//             }
+//         };
+//     }
+// });
+
+frappe.ui.form.on("Agriculture Development Item2", 
+    "qty", function(frm, cdt, cdn) {
+     var d = locals[cdt][cdn];
+     if(d.qty >= 0 && d.rate >= 0){
+        var result = ((d.qty * d.rate)).toFixed(2);
+        frappe.model.set_value(cdt, cdn, 'amount', result);
+    }
+});
+frappe.ui.form.on("Agriculture Development Item2", 
+    "rate", function(frm, cdt, cdn) {
+     var d = locals[cdt][cdn];
+     if(d.qty >= 0 && d.rate >= 0){
+        var result = ((d.qty * d.rate)).toFixed(2);
+        frappe.model.set_value(cdt, cdn, 'amount', result);
     }
 });
 
 
+
+frappe.ui.form.on("Agriculture Development", {
+    before_save:function(frm, cdt, cdn){
+    var d = locals[cdt][cdn];
+    var total1 = 0.0;
+    var bsl = 0.0;
+    var pri = 0.0;
+    var ear = 0.0;
+    var ran = 0.0;
+    var rot1 = 0.0;
+    var rot2 = 0.0;
+    frm.doc.agriculture_development_item.forEach(function(d) { total1 += parseFloat(d.qty); });
+    frm.doc.agriculture_development_item.forEach(function(d) { bsl += parseFloat(d.basel); });
+    frm.doc.agriculture_development_item.forEach(function(d) { pri += parseFloat(d.pre_earthing); });
+    frm.doc.agriculture_development_item.forEach(function(d) { ear += parseFloat(d.earth); });
+    frm.doc.agriculture_development_item.forEach(function(d) { ran += parseFloat(d.rainy); });
+    frm.doc.agriculture_development_item.forEach(function(d) { rot1 += parseFloat(d.ratoon_1); });
+    frm.doc.agriculture_development_item.forEach(function(d) { rot2 += parseFloat(d.ratoon_2); });
+    frm.set_value("total", total1); frm.set_value("basel_total",bsl); frm.set_value("pre_earthing_total",pri);
+    frm.set_value("earth_total",ear); frm.set_value("rainy_total",ran); frm.set_value("ratoon_1_total",rot1);
+    frm.set_value("ratoon_2_total",rot2);
+    refresh_field("total"); refresh_field("basel_total"); refresh_field("pre_earthing_total"); refresh_field("earth_total");
+    refresh_field("rainy_total"); refresh_field("ratoon_1_total"); refresh_field("ratoon_2_total");
+  },
+  update:function(frm, cdt, cdn){
+    var d = locals[cdt][cdn];
+    var total1 = 0.0;
+    var bsl = 0.0;
+    var pri = 0.0;
+    var ear = 0.0;
+    var ran = 0.0;
+    var rot1 = 0.0;
+    var rot2 = 0.0;
+    frm.doc.agriculture_development_item.forEach(function(d) { total1 += parseFloat(d.qty); });
+    frm.doc.agriculture_development_item.forEach(function(d) { bsl += parseFloat(d.basel); });
+    frm.doc.agriculture_development_item.forEach(function(d) { pri += parseFloat(d.pre_earthing); });
+    frm.doc.agriculture_development_item.forEach(function(d) { ear += parseFloat(d.earth); });
+    frm.doc.agriculture_development_item.forEach(function(d) { ran += parseFloat(d.rainy); });
+    frm.doc.agriculture_development_item.forEach(function(d) { rot1 += parseFloat(d.ratoon_1); });
+    frm.doc.agriculture_development_item.forEach(function(d) { rot2 += parseFloat(d.ratoon_2); });
+    frm.set_value("total", total1); frm.set_value("basel_total",bsl); frm.set_value("pre_earthing_total",pri);
+    frm.set_value("earth_total",ear); frm.set_value("rainy_total",ran); frm.set_value("ratoon_1_total",rot1);
+    frm.set_value("ratoon_2_total",rot2);
+    refresh_field("total"); refresh_field("basel_total"); refresh_field("pre_earthing_total"); refresh_field("earth_total");
+    refresh_field("rainy_total"); refresh_field("ratoon_1_total"); refresh_field("ratoon_2_total");
+  },
+  agriculture_development_item_remove:function(frm, cdt, cdn){
+    var d = locals[cdt][cdn];
+    var total1 = 0.0;
+    var bsl = 0.0;
+    var pri = 0.0;
+    var ear = 0.0;
+    var ran = 0.0;
+    var rot1 = 0.0;
+    var rot2 = 0.0;
+    frm.doc.agriculture_development_item.forEach(function(d) { total1 += parseFloat(d.qty); });
+    frm.doc.agriculture_development_item.forEach(function(d) { bsl += parseFloat(d.basel); });
+    frm.doc.agriculture_development_item.forEach(function(d) { pri += parseFloat(d.pre_earthing); });
+    frm.doc.agriculture_development_item.forEach(function(d) { ear += parseFloat(d.earth); });
+    frm.doc.agriculture_development_item.forEach(function(d) { ran += parseFloat(d.rainy); });
+    frm.doc.agriculture_development_item.forEach(function(d) { rot1 += parseFloat(d.ratoon_1); });
+    frm.doc.agriculture_development_item.forEach(function(d) { rot2 += parseFloat(d.ratoon_2); });
+    frm.set_value("total", total1); frm.set_value("basel_total",bsl); frm.set_value("pre_earthing_total",pri);
+    frm.set_value("earth_total",ear); frm.set_value("rainy_total",ran); frm.set_value("ratoon_1_total",rot1);
+    frm.set_value("ratoon_2_total",rot2);
+    refresh_field("total"); refresh_field("basel_total"); refresh_field("pre_earthing_total"); refresh_field("earth_total");
+    refresh_field("rainy_total"); refresh_field("ratoon_1_total"); refresh_field("ratoon_2_total");
+  },
+});
 
 
 

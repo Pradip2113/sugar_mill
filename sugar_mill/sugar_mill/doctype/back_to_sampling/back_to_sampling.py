@@ -30,6 +30,8 @@ class BackToSampling(Document):
 			"Crop Harvesting",
 			fields=[
 				"id",
+				"plant_name",
+				"grower_code",
 				"grower_name",
 				"crop_sample_id",
 				"form_number",
@@ -69,6 +71,8 @@ class BackToSampling(Document):
 							"id": d.id,
 							"crop_sample_id":d.crop_sample_id,
 							"crop_harvesting_id":d.name,
+							"plant_name":d.plant_name,
+							"grower_code":d.grower_code,
 							"grower_name": d.grower_name,
 							"form_number": d.form_number,
 							"plantattion_ratooning_date": d.plantattion_ratooning_date,
@@ -97,6 +101,8 @@ class BackToSampling(Document):
 							"id": d.id,
 							"crop_sample_id":d.crop_sample_id,
 							"crop_harvesting_id":d.name,
+							"plant_name":d.plant_name,
+							"grower_code":d.grower_code,
 							"grower_name": d.grower_name,
 							"form_number": d.form_number,
 							"plantattion_ratooning_date": d.plantattion_ratooning_date,
@@ -125,7 +131,7 @@ class BackToSampling(Document):
    
 	@frappe.whitelist()
 	def before_save(self):
-		pass
+		# pass
 		for row in self.get("cane_harvesting_data"):
 			if row.check :
 				if row.crop_sample_id =="Without Sampling":

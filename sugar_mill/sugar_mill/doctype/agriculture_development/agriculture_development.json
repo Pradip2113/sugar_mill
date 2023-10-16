@@ -18,6 +18,10 @@
   "vendor_code",
   "column_break_mkfmf",
   "grower_name",
+  "section_break_brlam",
+  "nursery_supplier",
+  "column_break_1mt8w",
+  "supplier_name",
   "section_break_21",
   "branch",
   "column_break_ka33i",
@@ -51,7 +55,22 @@
   "agriculture_development_item",
   "agriculture_development_item2",
   "amended_from",
-  "grantor"
+  "section_break_gvjr0",
+  "basel_total",
+  "column_break_cnerw",
+  "pre_earthing_total",
+  "column_break_klfmv",
+  "earth_total",
+  "column_break_uk45c",
+  "rainy_total",
+  "column_break_hhrdn",
+  "ratoon_2_total",
+  "column_break_f1b3z",
+  "ratoon_1_total",
+  "total",
+  "section_break_shwaw",
+  "grantor",
+  "creator_name"
  ],
  "fields": [
   {
@@ -144,6 +163,7 @@
    "label": "Village"
   },
   {
+   "fetch_from": "cane_registration_id.route_km",
    "fieldname": "route",
    "fieldtype": "Data",
    "label": "K.M."
@@ -291,6 +311,102 @@
    "label": "Agriculture Development Item",
    "mandatory_depends_on": "eval:doc.sales_type !='Fertilizer'",
    "options": "Agriculture Development Item2"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Float",
+   "label": "Total",
+   "precision": "2"
+  },
+  {
+   "fieldname": "section_break_shwaw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_gvjr0",
+   "fieldtype": "Section Break",
+   "mandatory_depends_on": "eval:doc.sales_type =='Fertilizer'"
+  },
+  {
+   "fieldname": "column_break_cnerw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_klfmv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_uk45c",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "basel_total",
+   "fieldtype": "Float",
+   "label": "Basel Total"
+  },
+  {
+   "fieldname": "pre_earthing_total",
+   "fieldtype": "Float",
+   "label": "Pre Earthing Total",
+   "precision": "2"
+  },
+  {
+   "fieldname": "earth_total",
+   "fieldtype": "Float",
+   "label": "Earth Total",
+   "precision": "2"
+  },
+  {
+   "fieldname": "rainy_total",
+   "fieldtype": "Float",
+   "label": "Rainy Total",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_hhrdn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ratoon_2_total",
+   "fieldtype": "Float",
+   "label": "Ratoon 2 Total"
+  },
+  {
+   "fieldname": "column_break_f1b3z",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ratoon_1_total",
+   "fieldtype": "Float",
+   "label": "Ratoon 1 Total",
+   "precision": "2"
+  },
+  {
+   "fieldname": "nursery_supplier",
+   "fieldtype": "Link",
+   "label": "Nursery Supplier ",
+   "options": "Supplier"
+  },
+  {
+   "fetch_from": "nursery_supplier.supplier_name",
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "label": "Supplier Name"
+  },
+  {
+   "fieldname": "section_break_brlam",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_1mt8w",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "__user",
+   "fieldname": "creator_name",
+   "fieldtype": "Link",
+   "label": "Creator Name",
+   "options": "User"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -301,7 +417,7 @@
    "link_fieldname": "agriculture_order"
   }
  ],
- "modified": "2023-09-20 17:08:04.880086",
+ "modified": "2023-10-12 16:41:12.046593",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Agriculture Development",

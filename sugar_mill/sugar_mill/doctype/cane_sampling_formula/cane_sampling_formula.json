@@ -13,7 +13,8 @@
   "column_break_3klzl",
   "minimum_pairs",
   "column_break_7wtzy",
-  "maximum_pairs"
+  "maximum_pairs",
+  "cane_slip_counter"
  ],
  "fields": [
   {
@@ -47,13 +48,18 @@
    "fieldname": "maximum_pairs",
    "fieldtype": "Data",
    "label": "Maximum Pairs"
+  },
+  {
+   "fieldname": "cane_slip_counter",
+   "fieldtype": "Int",
+   "label": "cane slip counter "
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2023-05-24 17:23:03.552970",
+ "modified": "2023-10-10 18:29:20.833688",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Cane Sampling Formula",

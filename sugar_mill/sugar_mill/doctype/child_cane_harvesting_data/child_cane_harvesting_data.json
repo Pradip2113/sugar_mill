@@ -22,7 +22,6 @@
   "grower_code",
   "grower_name",
   "column_break_10",
-  "mobile_no",
   "company_name",
   "is_kisan_card",
   "farmer_plot_details_section",
@@ -109,7 +108,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Plant Name (\u092f\u0941\u0928\u093f\u091f\u091a\u0947 \u0928\u093e\u0935)",
-   "options": "Plant"
+   "options": "Branch"
   },
   {
    "fieldname": "form_number",
@@ -142,13 +141,6 @@
   {
    "fieldname": "column_break_10",
    "fieldtype": "Column Break"
-  },
-  {
-   "fetch_from": "grower_code.mobile",
-   "fieldname": "mobile_no",
-   "fieldtype": "Data",
-   "label": "Mobile No. (\u092e\u094b\u092c\u093e\u0908\u0932 \u0928\u0902\u092c\u0930)",
-   "read_only": 1
   },
   {
    "fieldname": "company_name",
@@ -388,7 +380,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-27 13:12:51.424461",
+ "modified": "2023-10-10 16:07:17.514962",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Child Cane Harvesting Data",

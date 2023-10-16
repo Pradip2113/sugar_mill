@@ -61,8 +61,8 @@
   "state",
   "data_47",
   "my_location",
-  "amended_from",
-  "vendor_code"
+  "vendor_code",
+  "amended_from"
  ],
  "fields": [
   {
@@ -132,7 +132,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "id.mobile_no",
    "fieldname": "mobile_no",
    "fieldtype": "Data",
    "label": "Mobile No. (\u092e\u094b\u092c\u093e\u0908\u0932 \u0928\u0902\u092c\u0930)",
@@ -389,24 +388,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Crop Harvesting",
-   "print_hide": 1,
-   "read_only": 1
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Crop Harvesting",
-   "print_hide": 1,
-   "read_only": 1
-  },
-  {
    "fetch_from": "id.plantation_status",
    "fieldname": "plantation_status",
    "fieldtype": "Select",
@@ -438,13 +419,23 @@
    "fetch_from": "id.vendor_code",
    "fieldname": "vendor_code",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "vendor code"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Crop Harvesting",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-09-20 11:09:46.748640",
+ "modified": "2023-10-10 15:49:42.535926",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Crop Harvesting",

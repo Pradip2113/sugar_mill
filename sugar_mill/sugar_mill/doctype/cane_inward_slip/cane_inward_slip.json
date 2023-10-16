@@ -19,6 +19,7 @@
   "time",
   "column_break_n7kym",
   "get_reading",
+  "slip_noday",
   "slip_no",
   "section_break_uoiyk",
   "plot_no",
@@ -44,12 +45,16 @@
   "burn_cane",
   "section_break_zqobq",
   "transporter_code",
+  "transporter_code_ht",
   "column_break_abhrl",
   "transporter_name",
   "transporter",
+  "show_pending_slip",
   "column_break_ewxbv",
   "vehicle_type",
+  "rfid_tag",
   "column_break_3se2z",
+  "harvester_code_ht",
   "harvester_code",
   "column_break_pipgl",
   "harvester_name",
@@ -59,13 +64,13 @@
   "cartno",
   "column_break_4xh55",
   "vehicle_number",
+  "manually_entry_for_rfid",
   "column_break_xekau",
   "tolly_1",
   "column_break_y8ct3",
   "tolly_2",
   "column_break_9x4aw",
   "rope",
-  "manually_entry_for_rfid",
   "section_break_xrk4p",
   "water_supplier",
   "column_break_hkbg2",
@@ -80,8 +85,7 @@
   "section_break_sw406",
   "pending_slip",
   "ip_of_indicator",
-  "port_no_of_indicator",
-  "rfid_tag"
+  "port_no_of_indicator"
  ],
  "fields": [
   {
@@ -161,6 +165,7 @@
    "label": "Farmer Name"
   },
   {
+   "depends_on": "eval:doc.manually_entry_for_rfid == 1",
    "fieldname": "transporter_code",
    "fieldtype": "Link",
    "label": "Transporter Code",
@@ -190,14 +195,12 @@
    "fieldtype": "Section Break"
   },
   {
-   "fetch_from": "plot_no.harvester_code",
    "fieldname": "harvester_code",
    "fieldtype": "Link",
-   "label": "Harvester Code",
+   "label": "Farmer Code",
    "options": "Farmer List"
   },
   {
-   "fetch_from": "plot_no.harvester_name",
    "fieldname": "harvester_name",
    "fieldtype": "Data",
    "label": "Harvester Name"
@@ -288,7 +291,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "plot_no.cartno",
    "fieldname": "cartno",
    "fieldtype": "Float",
    "label": "Cart Number",
@@ -407,10 +409,10 @@
    "fieldtype": "Column Break"
   },
   {
-   "default": "1",
    "fieldname": "slip_no",
    "fieldtype": "Int",
-   "label": "Slip No",
+   "hidden": 1,
+   "label": "Slip No(Season)",
    "precision": "0"
   },
   {
@@ -428,7 +430,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "plot_no.gang_type",
    "fieldname": "gang_type",
    "fieldtype": "Link",
    "label": "Gang Type",
@@ -490,17 +491,41 @@
   {
    "fieldname": "ip_of_indicator",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "IP of Indicator"
   },
   {
    "fieldname": "port_no_of_indicator",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "PORT no of indicator"
+  },
+  {
+   "fieldname": "harvester_code_ht",
+   "fieldtype": "Data",
+   "label": "Harvester Code"
+  },
+  {
+   "depends_on": "eval:doc.manually_entry_for_rfid == 0",
+   "fieldname": "transporter_code_ht",
+   "fieldtype": "Data",
+   "label": "Transporter Code"
+  },
+  {
+   "fieldname": "show_pending_slip",
+   "fieldtype": "Button",
+   "label": "Show Pending Slip"
+  },
+  {
+   "fieldname": "slip_noday",
+   "fieldtype": "Int",
+   "label": "Token Number",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-05 13:01:11.937642",
+ "modified": "2023-10-13 15:01:09.134971",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Cane Inward Slip",

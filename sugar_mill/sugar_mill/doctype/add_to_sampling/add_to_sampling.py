@@ -10,27 +10,45 @@ from frappe.model.document import Document
 class AddToSampling(Document):
     @frappe.whitelist()
     def list(self):
+        crop_variety_list=[str(d.crop_variety_link) for d in self.crop_variety]
+        crop_type_list=[str(d.crop_type_link) for d in self.crop_type]
+        circle_office_list = [str(d.circle_office_link) for d in self.circle_office]
+        village_list=[str(d.village_link) for d in self.village]
         #  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        village_items = [d.village_link for d in self.village]
-        condition_1 = "{}".format("  or  ".join(["d.area == '{}'".format(name) for name in village_items]))
-        circle_office_items = [d.circle_office_link for d in self.circle_office]
-        condition_2 = "{}".format("  or  ".join(["d.circle_office == '{}'".format(name) for name in circle_office_items]))
-        crop_variety_items = [d.crop_variety_link for d in self.crop_variety]
-        condition_3 = "{}".format("  or  ".join(["d.crop_variety == '{}'".format(name) for name in crop_variety_items]))
-        crop_type_items = [d.crop_type_link for d in self.crop_type]
-        condition_4 = "{}".format("  or  ".join(["d.crop_type == '{}'".format(name) for name in crop_type_items]))
-        if condition_1 == "" and self.select_all_records_for_sampling==0:
-            frappe.throw("Please fill up village")
-        if condition_2 == "" and self.select_all_records_for_sampling==0:
-            frappe.throw("Please fill up circle_office")
-        if condition_3 == "" and self.select_all_records_for_sampling==0:
-            frappe.throw("Please fill up crop_variety")
-        if condition_4 == "" and self.select_all_records_for_sampling==0:
-            frappe.throw("Please fill up crop_type")
+        # village_items = [d.village_link for d in self.village]
+        # condition_1 = "{}".format("  or  ".join(["d.area == '{}'".format(name) for name in village_items]))
+        # circle_office_items = [d.circle_office_link for d in self.circle_office]
+        # condition_2 = "{}".format("  or  ".join(["d.circle_office == '{}'".format(name) for name in circle_office_items]))
+        # crop_variety_items = [d.crop_variety_link for d in self.crop_variety]
+        # condition_3 = "{}".format("  or  ".join(["d.crop_variety == '{}'".format(name) for name in crop_variety_items]))
+        # crop_type_items = [d.crop_type_link for d in self.crop_type]
+        # condition_4 = "{}".format("  or  ".join(["d.crop_type == '{}'".format(name) for name in crop_type_items]))
+        # if condition_1 == "" and self.select_all_records_for_sampling==0:
+        #     frappe.throw("Please fill up village")
+        # if condition_2 == "" and self.select_all_records_for_sampling==0:
+        #     frappe.throw("Please fill up circle_office")
+        # if condition_3 == "" and self.select_all_records_for_sampling==0:
+        #     frappe.throw("Please fill up crop_variety")
+        # if condition_4 == "" and self.select_all_records_for_sampling==0:
+        #     frappe.throw("Please fill up crop_type")
 
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        doc = frappe.db.get_list(
+        filters={"plantation_status":"New"}
+        if circle_office_list:
+            filters["circle_office"] = ["in", list(circle_office_list)]
+        if village_list:
+            filters["area"] = ["in", village_list]
+        if crop_variety_list:
+            filters["crop_variety"] = ["in", crop_variety_list]
+        if crop_type_list:
+            filters["crop_type"] = ["in", crop_type_list]
+        if self.season:
+            filters["season"]=self.season
+        if self.from_date and self.to_date:
+            filters["plantattion_ratooning_date"]=["between", [self.from_date, self.to_date]]
+        doc = frappe.get_all(
             "Cane Master",
+            filters=filters,
             fields=[
                 "plant_name",
                 "grower_name",
@@ -44,27 +62,28 @@ class AddToSampling(Document):
                 "plantation_status",
                 "season",
                 "crop_type",
-                "docstatus"
+                "docstatus",
+                "area"
             ],
-        )
+        )   
         if not self.select_all_records_for_sampling:
             for d in doc:
                 # frappe.msgprint(str(d.plantattion_ratooning_date))
                 # frappe.msgprint(str(d.docstatus))
-                if (
-                    d.plantation_status == "New"
-                    # and str(d.docstatus) == "1"
-                    and (
-                        str(self.from_date)
-                        <= str(d.plantattion_ratooning_date)
-                        <= str(self.to_date)
-                    )
-                    and (self.season == d.season)
-                    and eval(condition_1)
-                    and eval(condition_2)
-                    and eval(condition_3)
-                    and eval(condition_4)
-                ):
+                # if (
+                #     d.plantation_status == "New"
+                #     # and str(d.docstatus) == "1"
+                #     and (
+                #         str(self.from_date)
+                #         <= str(d.plantattion_ratooning_date)
+                #         <= str(self.to_date)
+                #     )
+                #     and (self.season == d.season)
+                #     and eval(condition_1)
+                #     and eval(condition_2)
+                #     and eval(condition_3)
+                #     and eval(condition_4)
+                # ):
                     # if(self.village == d.area) and (self.circle_office == d.circle_office) and (self.crop_variety == d.crop_variety):
                     self.append(
                         "cane_master_data",

@@ -129,6 +129,13 @@ doc_events = {
 
 # Scheduled Tasks
 # ---------------
+scheduler_events = {
+	"cron": {
+       		"00 21 17 * * *": [
+            		"sugar_mill.sugar_mill.doctype.cane_inward_slip.cane_inward_slip.reset_counter"
+        		]
+		}
+}
 
 # scheduler_events = {
 #	"all": [

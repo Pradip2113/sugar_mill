@@ -29,10 +29,12 @@
   "circle",
   "column_break_13",
   "transporter_code",
+  "trans_vendor_code",
   "harvester_code",
   "village_tra",
   "column_break_16",
   "transporter_name",
+  "har_vendor_code",
   "harvester_name",
   "is_temporary_block",
   "column_break_19",
@@ -70,9 +72,12 @@
   "bank_details",
   "data_46",
   "labour_details",
+  "rfid_tag",
+  "last_cane_weight_entry",
+  "last_cane_slip_entry",
   "section_break_s9dsl",
   "amended_from",
-  "rfid_tag"
+  "bas_pali"
  ],
  "fields": [
   {
@@ -463,12 +468,46 @@
    "fieldtype": "Table",
    "label": "Contract Surety",
    "options": "Contract Surety"
+  },
+  {
+   "fetch_from": "harvester_code.existing_supplier_code",
+   "fieldname": "har_vendor_code",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "har Vendor code"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "last_cane_weight_entry",
+   "fieldtype": "Datetime",
+   "label": "Last Cane weight Entry",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "bas_pali",
+   "fieldtype": "Check",
+   "label": "Bas Pali  Status"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "last_cane_slip_entry",
+   "fieldtype": "Datetime",
+   "label": "Last Cane Slip Entry",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "transporter_code.existing_supplier_code",
+   "fieldname": "trans_vendor_code",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Trans vendor code"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-08-04 11:27:19.821432",
+ "modified": "2023-09-26 14:41:01.640529",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "H and T Contract",
@@ -491,7 +530,6 @@
   }
  ],
  "search_fields": "transporter_name",
- "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],

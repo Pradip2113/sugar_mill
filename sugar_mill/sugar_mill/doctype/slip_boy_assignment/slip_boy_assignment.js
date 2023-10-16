@@ -60,11 +60,26 @@
                     alreadyavailablevillageintable.push(row.village);
                 });
                 return {
-                    filters: [['name', 'not in', alreadyavailablevillageintable],]
+                    filters: [['name', 'not in', alreadyavailablevillageintable], ['Route', 'circle_office', '=', doc.circle_office]]
                 };
             });
     
     
+        },
+    });
+
+
+    frappe.ui.form.on('Slip Boy Assignment', {
+        circle_office: function(frm) {
+            frm.set_query("village", "village_table_sb", function(doc, cdt, cdn) {
+                let d = locals[cdt][cdn];
+                return {
+    
+                    filters: [
+                        ['Route', 'circle_office', '=', doc.circle_office]
+                    ]
+                };
+            });
         },
     });
 

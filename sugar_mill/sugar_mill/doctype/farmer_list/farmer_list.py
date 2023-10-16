@@ -33,7 +33,6 @@ class FarmerList(Document):
 			k.customer_name=self.supplier_name
 			k.customer_group=self.supplier_group
 			k.branch = self.branch
-   
 			k.territory="India"
 			k.insert()
 			moc = frappe.db.get_all("Customer", fields=["name"], order_by="creation DESC", limit=1)

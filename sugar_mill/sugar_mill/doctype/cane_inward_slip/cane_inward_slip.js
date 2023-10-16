@@ -17,7 +17,8 @@
 // 	}
 // });
 frappe.ui.form.on('Cane Inward Slip', {
-	plot_no: function(frm) {frm.call({
+	plot_no: function(frm) 
+	{frm.call({
 			method:'hdata',//function name defined in python
 			doc: frm.doc, //current document
 		});
@@ -25,7 +26,8 @@ frappe.ui.form.on('Cane Inward Slip', {
 	}
 });
 frappe.ui.form.on('Cane Inward Slip', {
-	transporter_code: function(frm) {frm.call({
+	transporter_code: function(frm) 
+	{frm.call({
 			method:'vivo',//function name defined in python
 			doc: frm.doc, //current document
 		});
@@ -39,7 +41,7 @@ frappe.ui.form.on("Cane Inward Slip", {
             frm.set_query("harvester_code", function() { // Replace with the name of the link field
                 return {
                     filters: [
-                        ["Farmer List", "is_harvester", '=', 1], // Replace with your actual filter criteria
+                        //["Farmer List", "is_harvester", '=', 1], // Replace with your actual filter criteria
                         ["Farmer List", "workflow_state", '=', 'Approved']
                     ]
                 };
@@ -53,27 +55,26 @@ frappe.ui.form.on("Cane Inward Slip", {
             frm.set_query("transporter_code", function() { // Replace with the name of the link field
                 return {
                     filters: [
-                        ["H and T Contract", "docstatus", '=', 1], // Replace with your actual filter criteria
+                       // ["H and T Contract", "docstatus", '=', 1], // Replace with your actual filter criteria
                     ]
                 };
             });
         // }
     },
-    onload: function(frm) {
+});
+
+frappe.ui.form.on("Cane Inward Slip", {
+	onload: function(frm) {
+		
         frm.call({
-        			method:'get_reading',//function name defined in python
+        			method:'get_infodata',//function name defined in python
         			doc: frm.doc, //current document
         		});
         	}
 });
-// frappe.ui.form.on("Cane Inward Slip", {
-//     before_save(frm) {
-//         frm.call({
-//             method:'abhi',//function name defined in python
-//             doc: frm.doc, //current document
-//         });
-//     }
-// });
+
+
+
 // frappe.ui.form.on('Cane Inward Slip', {
 // 	show: function(frm) {
 // 		frm.call({
@@ -83,6 +84,9 @@ frappe.ui.form.on("Cane Inward Slip", {
 
 // 	}
 // });
+
+
+
 frappe.ui.form.on('Cane Inward Slip', {
 	manually_entry_for_rfid: function (frm) {
 	  var manuallyWeight = frm.doc.manually_entry_for_rfid;
@@ -97,10 +101,11 @@ frappe.ui.form.on('Cane Inward Slip', {
 	}
   });
 
-  frappe.ui.form.on('Cane Inward Slip', {
-	after_save: function(frm) {frm.call({
+frappe.ui.form.on('Cane Inward Slip', {
+	after_save: function(frm) {
+		frm.call({
 		method:'call_indicator',//function name defined in python
-			doc: frm.doc, //current document
+		doc: frm.doc, //current document
 		});
 		
 	}
@@ -124,8 +129,18 @@ frappe.ui.form.on('Cane Inward Slip', {
 // });
 
 frappe.ui.form.on('Cane Inward Slip', {
-	transporter_code: function(frm) {frm.call({
+	
+
+	show_pending_slip: function(frm) {
+		
+		frm.clear_table("pending_slip")
+		frm.refresh_field('pending_slip')
+		
+		frm.call({
+
+		
 			method:'get_tripsheet_info',//function name defined in python
+
 			doc: frm.doc, //current document
 		});
 	}

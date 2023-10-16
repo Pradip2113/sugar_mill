@@ -88,5 +88,13 @@ class OverseerAssignment(Document):
 					permission_doc.delete()
  
  
+			doc_1 = frappe.db.get_list("User Permission",
+												filters={"user": m.field_man, "for_value": m.circle_office},
+												fields=["name"],)
+			for k_1 in doc_1:
+				permission_doc_1 = frappe.get_doc("User Permission", k_1.name)
+				if permission_doc_1:
+					permission_doc_1.delete()
+ 
  
  

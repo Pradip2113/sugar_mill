@@ -58,6 +58,7 @@
   "consent_letter",
   "bank_detail_section",
   "bank_details",
+  "cane_registration_flag",
   "rfid_tag",
   "tab_break_i395p",
   "section_break_lbzyz",
@@ -720,7 +721,13 @@
   {
    "fieldname": "rfid_tag",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "RFID Tag"
+  },
+  {
+   "fieldname": "cane_registration_flag",
+   "fieldtype": "Int",
+   "label": "Cane Registration Flag"
   }
  ],
  "icon": "fa fa-user",
@@ -732,7 +739,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2023-08-31 14:53:15.569193",
+ "modified": "2023-10-12 18:09:28.596073",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Farmer List",

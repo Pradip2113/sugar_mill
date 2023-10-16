@@ -11,7 +11,7 @@ class CropSampling(Document):
         if self.average_brix:
             if self.no_of_pairs==0:
                     frappe.throw("Please Enter No. Of Pairs")
-            sam = frappe.get_doc("Cane Sampling Formula", "Cane Sampling Formula",fields=["from_brix", "from_pairs","to_brix","to_pairs"])
+            sam = frappe.get_doc("Cane Sampling Formula", "Cane Sampling Formula",fields=["minimum_brix", "maximum_brix","minimum_pairs","maximum_pairs"])
             minimum_brix=sam.minimum_brix
             minimum_pairs=sam.minimum_pairs
             
@@ -56,3 +56,21 @@ class CropSampling(Document):
 			# 	break
 	# def before_save(self):
 	# 	frappe.db.set_value("Crop Sampling", self.id ,"plantation_status", "Add to Sampling")
+    @frappe.whitelist()
+    def validation_for_Brix(self):
+        sam = frappe.get_doc("Cane Sampling Formula", "Cane Sampling Formula", fields=["minimum_brix", "maximum_brix", "minimum_pairs", "maximum_pairs"])
+        minimum_brix = sam.minimum_brix
+
+        if minimum_brix is not None and self.average_brix is not None:
+            if self.average_brix < float(minimum_brix):
+                frappe.throw('value should be more than minimum Brix')
+        else:
+            frappe.throw('Minimum Brix value is not set or average Brix value is missing')
+
+                
+    @frappe.whitelist()
+    def validation_for_Pairs(self):
+        sam = frappe.get_doc("Cane Sampling Formula", "Cane Sampling Formula",fields=["minimum_brix", "maximum_brix","minimum_pairs","maximum_pairs"])
+        minimum_pairs=sam.minimum_pairs
+        if self.no_of_pairs < int(minimum_pairs):
+                frappe.throw('value should be more than minimum no. of pairs')

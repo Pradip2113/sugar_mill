@@ -14,25 +14,25 @@ class AgricultureDevelopment(Document):
 	# 	frappe.get_doc("DocType", "agriculture_development_item").get("fields", {"basel": "basel"}).hidden = 1
     
     
-	@frappe.whitelist()
-	def hide_basel_column(self):
-		# Get the parent document
-		parent_doc = frappe.get_doc("Agriculture Development", self)
+	# @frappe.whitelist()
+	# def hide_basel_column(self):
+	# 	# Get the parent document
+	# 	parent_doc = frappe.get_doc("Agriculture Development", self)
 
-		# Check the value of the 'sales_type' field
-		sales_type = self.sales_type
+	# 	# Check the value of the 'sales_type' field
+	# 	sales_type = self.sales_type
 
-		# Check if the 'sales_type' field matches the condition to hide the 'Basel' column
-		if sales_type != "Fertilizer":  # Replace 'YourCondition' with your specific condition
-			# Set the 'hidden' property of the 'Basel' field to 1 in the child table
-			for row in parent_doc.get("agriculture_development_item"):  # Replace 'child_table_name' with the actual child table name
-				row.basel.hidden = 1
+	# 	# Check if the 'sales_type' field matches the condition to hide the 'Basel' column
+	# 	if sales_type != "Fertilizer":  # Replace 'YourCondition' with your specific condition
+	# 		# Set the 'hidden' property of the 'Basel' field to 1 in the child table
+	# 		for row in parent_doc.get("agriculture_development_item"):  # Replace 'child_table_name' with the actual child table name
+	# 			row.basel.hidden = 1
 
-			# Save the parent document to apply the changes
-			parent_doc.save()
-			frappe.msgprint("The 'Basel' column is now hidden.")
-		else:
-			frappe.msgprint("The 'Basel' column is not hidden.")
+	# 		# Save the parent document to apply the changes
+	# 		parent_doc.save()
+	# 		frappe.msgprint("The 'Basel' column is now hidden.")
+	# 	else:
+	# 		frappe.msgprint("The 'Basel' column is not hidden.")
 
 	# Call the function to hide the 'basel' column
 	# hide_basel_column()
@@ -61,6 +61,7 @@ class AgricultureDevelopment(Document):
 	def area_val(self):
 		if (self.area < self.development_area):
 			frappe.throw("Enter Valid Development Area......")
+   
 	@frappe.whitelist()
 	def before_save(self):
 		for i in self.get("agriculture_development_item"):

@@ -25,7 +25,7 @@ frappe.ui.form.on('Vendor', {
 		filters: {
 		  'supplier_name': ['like', '%' + vendor_name + '%']
 		},
-  
+        order_by:'workflow_state desc'
 	  },
 	  callback: function(response) {
 		var data = response.message;

@@ -21,8 +21,7 @@ class HandTContract(Document):
 		moc.trolly__1 = self.trolly_1
 		moc.trolly_2 = self.trolly_2
 
-		doc=frappe.db.get_list("Branch",filters={"branch" : self.plant},
-											fields=["name","cart_no"])
+		doc=frappe.db.get_list("Branch",filters={"branch" : self.plant},fields=["name","cart_no"])
 		pre_cart_no=int(doc[0].get("cart_no"))
   
 		for i in range(pre_cart_no+1,int(self.total_vehicle)+pre_cart_no+1):
@@ -59,11 +58,11 @@ class HandTContract(Document):
 		frappe.db.set_value("Vehicle Registration",str(self.season)+"-"+str(self.name), "transporter_code",self.transporter_code)
 		frappe.db.set_value("Vehicle Registration",str(self.season)+"-"+str(self.name), "season",self.season)
 		self.changing_the_no_of_chart_after_updating()
-	# @frappe.whitelist()
-	# def eeeuu(self):
-	# 	chil = frappe.get_all("Vehicle Registration item", fields=["name","cart_no"])
-	# 	for m in chil:
-	# 		frappe.db.set_value("Vehicle Registration item", m.name, "cart_no",m.name)
+	@frappe.whitelist()
+	def eeeuu(self):
+		chil = frappe.get_all("Vehicle Registration item", fields=["name","cart_no"])
+		for m in chil:
+			frappe.db.set_value("Vehicle Registration item", m.name, "cart_no",m.name)
    
 	@frappe.whitelist()
 	def changing_the_no_of_chart_after_updating(self):

@@ -6,6 +6,7 @@ from frappe.model.document import Document
 
 class CaneMaster(Document):
 	def before_save(self):
+		frappe.db.set_value("Farmer List",  self.grower_code, "cane_registration_flag",1)
 		existing_cane_record = frappe.get_all('Cane Master', filters={'name': self.name})
 		if len(existing_cane_record)==1:
 			s = frappe.get_all('Crop Sampling', filters={'id': self.name}, fields={"plantation_status","name"})
