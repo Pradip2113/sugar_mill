@@ -29,13 +29,15 @@ class CaneInwardSlip(Document):
 	def set_counter(self):
 		exist_counter_value= frappe.get_value("Branch",self.branch,"cane_slip_no")
 		self.slip_noday = int(exist_counter_value) + 1
-		frappe.set_value("Branch",self.branch,"cane_slip_no",self.slip_noday)		
+		frappe.set_value("Branch",self.branch,"cane_slip_no",self.slip_noday)
+		
 	
 	@frappe.whitelist()
 	def reset_counter(self):
 		doc = frappe.get_all("Cane Inward Slip", filters= {"time": ["<", self.time], "time" : [">",frappe.get_value("Branch", self.branch, "set_shift_time")] ,"date":self.date}, fields=["slip_noday"])
 		if not doc:
 			frappe.db.set_value("Branch", self.branch, "cane_slip_no", "0")
+
 
 	@frappe.whitelist()
 	def set_value_in_h_and_t_contract(self):
@@ -74,9 +76,9 @@ class CaneInwardSlip(Document):
 			except TimeoutError:
 				frappe.throw("Connection attempt timed out. Check the server and network connection.")
 			except Exception as e:
-				frappe.msgprint(f"An error occurred: {e}")
+				frappe.throw(f"An error occurred: {e}")
 			else:
-				frappe.msgprint("Data sent successfully.")
+				print("Data sent successfully.")
 		
 	@frappe.whitelist()
 	def call_indicator(self):

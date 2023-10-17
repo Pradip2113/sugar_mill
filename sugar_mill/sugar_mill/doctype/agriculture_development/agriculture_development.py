@@ -68,10 +68,12 @@ class AgricultureDevelopment(Document):
 			doc =frappe.db.get_all('Item Tax', filters={'parent':i.item_code}, fields={'name','item_tax_template','parent'})
 			for m in doc:
 				i.item_tax_temp = m.item_tax_template
+		
 		if (self.area < self.development_area):
 			frappe.throw("Enter Valid Development Area......")
 
 	
+
 
 	@frappe.whitelist()
 	def Calculate_Fertilizer(self,doctype,basel,preeathing,earth,rainy,ratoon1,ratoon2,area,croptype,cropvariety,areafixed,areagunta):
@@ -290,8 +292,6 @@ def make_nofarti(source_name,target_doc = None):
 		)
 	# frappe.msgprint("doclist")
 	return doclist
-
-
 
 
 

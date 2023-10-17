@@ -229,6 +229,7 @@ frappe.ui.form.on("Agriculture Development Item2",
 
 frappe.ui.form.on("Agriculture Development", {
     before_save:function(frm, cdt, cdn){
+        debugger
     var d = locals[cdt][cdn];
     var total1 = 0.0;
     var bsl = 0.0;
@@ -237,6 +238,7 @@ frappe.ui.form.on("Agriculture Development", {
     var ran = 0.0;
     var rot1 = 0.0;
     var rot2 = 0.0;
+    debugger
     frm.doc.agriculture_development_item.forEach(function(d) { total1 += parseFloat(d.qty); });
     frm.doc.agriculture_development_item.forEach(function(d) { bsl += parseFloat(d.basel); });
     frm.doc.agriculture_development_item.forEach(function(d) { pri += parseFloat(d.pre_earthing); });
@@ -252,6 +254,7 @@ frappe.ui.form.on("Agriculture Development", {
   },
   update:function(frm, cdt, cdn){
     var d = locals[cdt][cdn];
+    debugger
     var total1 = 0.0;
     var bsl = 0.0;
     var pri = 0.0;
@@ -273,6 +276,7 @@ frappe.ui.form.on("Agriculture Development", {
     refresh_field("rainy_total"); refresh_field("ratoon_1_total"); refresh_field("ratoon_2_total");
   },
   agriculture_development_item_remove:function(frm, cdt, cdn){
+    debugger
     var d = locals[cdt][cdn];
     var total1 = 0.0;
     var bsl = 0.0;

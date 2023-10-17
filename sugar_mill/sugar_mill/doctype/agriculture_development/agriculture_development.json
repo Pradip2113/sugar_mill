@@ -9,7 +9,7 @@
  "engine": "InnoDB",
  "field_order": [
   "sales_type",
-  "column_break_pi8ti",
+  "column_break_oqws0",
   "season",
   "column_break_fj3wq",
   "cane_registration_id",
@@ -55,19 +55,19 @@
   "agriculture_development_item",
   "agriculture_development_item2",
   "amended_from",
-  "section_break_gvjr0",
-  "basel_total",
-  "column_break_cnerw",
-  "pre_earthing_total",
-  "column_break_klfmv",
-  "earth_total",
-  "column_break_uk45c",
-  "rainy_total",
-  "column_break_hhrdn",
-  "ratoon_2_total",
-  "column_break_f1b3z",
-  "ratoon_1_total",
   "total",
+  "section_break_zzuqd",
+  "basel_total",
+  "column_break_rfr1d",
+  "pre_earthing_total",
+  "column_break_li3nc",
+  "earth_total",
+  "column_break_dfb8m",
+  "rainy_total",
+  "column_break_na6bn",
+  "ratoon_1_total",
+  "column_break_mtlfv",
+  "ratoon_2_total",
   "section_break_shwaw",
   "grantor",
   "creator_name"
@@ -117,8 +117,7 @@
   },
   {
    "fieldname": "section_break_2",
-   "fieldtype": "Section Break",
-   "mandatory_depends_on": "eval:doc.sales_type =='Fertilizer'"
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "section_break_10",
@@ -128,7 +127,6 @@
    "fieldname": "agriculture_development_item",
    "fieldtype": "Table",
    "label": "Agriculture Development Item",
-   "mandatory_depends_on": "eval:doc.sales_type =='Fertilizer'",
    "options": "Agriculture Development Item"
   },
   {
@@ -264,10 +262,6 @@
    "reqd": 1
   },
   {
-   "fieldname": "column_break_pi8ti",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "column_break_fj3wq",
    "fieldtype": "Column Break"
   },
@@ -296,90 +290,12 @@
    "options": "Contract Surety"
   },
   {
-   "fieldname": "sales_type",
-   "fieldtype": "Select",
-   "label": "Sales type",
-   "options": "\nDrip\nPlant (Rope)\nFertilizer"
-  },
-  {
    "fieldname": "column_break_ka33i",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "agriculture_development_item2",
-   "fieldtype": "Table",
-   "label": "Agriculture Development Item",
-   "mandatory_depends_on": "eval:doc.sales_type !='Fertilizer'",
-   "options": "Agriculture Development Item2"
-  },
-  {
-   "fieldname": "total",
-   "fieldtype": "Float",
-   "label": "Total",
-   "precision": "2"
-  },
-  {
    "fieldname": "section_break_shwaw",
    "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "section_break_gvjr0",
-   "fieldtype": "Section Break",
-   "mandatory_depends_on": "eval:doc.sales_type =='Fertilizer'"
-  },
-  {
-   "fieldname": "column_break_cnerw",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_klfmv",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_uk45c",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "basel_total",
-   "fieldtype": "Float",
-   "label": "Basel Total"
-  },
-  {
-   "fieldname": "pre_earthing_total",
-   "fieldtype": "Float",
-   "label": "Pre Earthing Total",
-   "precision": "2"
-  },
-  {
-   "fieldname": "earth_total",
-   "fieldtype": "Float",
-   "label": "Earth Total",
-   "precision": "2"
-  },
-  {
-   "fieldname": "rainy_total",
-   "fieldtype": "Float",
-   "label": "Rainy Total",
-   "precision": "2"
-  },
-  {
-   "fieldname": "column_break_hhrdn",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "ratoon_2_total",
-   "fieldtype": "Float",
-   "label": "Ratoon 2 Total"
-  },
-  {
-   "fieldname": "column_break_f1b3z",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "ratoon_1_total",
-   "fieldtype": "Float",
-   "label": "Ratoon 1 Total",
-   "precision": "2"
   },
   {
    "fieldname": "nursery_supplier",
@@ -407,6 +323,88 @@
    "fieldtype": "Link",
    "label": "Creator Name",
    "options": "User"
+  },
+  {
+   "fieldname": "section_break_zzuqd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Float",
+   "label": "Total",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_rfr1d",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "basel_total",
+   "fieldtype": "Float",
+   "label": "basel total",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_li3nc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pre_earthing_total",
+   "fieldtype": "Float",
+   "label": "pre earthing total",
+   "precision": "2"
+  },
+  {
+   "fieldname": "earth_total",
+   "fieldtype": "Float",
+   "label": "earth total",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_dfb8m",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_na6bn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rainy_total",
+   "fieldtype": "Float",
+   "label": "rainy total",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_mtlfv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ratoon_1_total",
+   "fieldtype": "Float",
+   "label": "ratoon 1 total",
+   "precision": "2"
+  },
+  {
+   "fieldname": "ratoon_2_total",
+   "fieldtype": "Float",
+   "label": "ratoon 2 total",
+   "precision": "2"
+  },
+  {
+   "fieldname": "agriculture_development_item2",
+   "fieldtype": "Table",
+   "label": "Agriculture Development Item2",
+   "options": "Agriculture Development Item2"
+  },
+  {
+   "fieldname": "sales_type",
+   "fieldtype": "Select",
+   "label": "Sales type",
+   "options": "\nFertilizer\nNursery\nDrip"
+  },
+  {
+   "fieldname": "column_break_oqws0",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -417,7 +415,7 @@
    "link_fieldname": "agriculture_order"
   }
  ],
- "modified": "2023-10-12 16:41:12.046593",
+ "modified": "2023-10-17 14:19:35.984303",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Agriculture Development",
@@ -425,6 +423,8 @@
  "owner": "Administrator",
  "permissions": [
   {
+   "amend": 1,
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -433,6 +433,21 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "select": 1,
    "share": 1,
    "write": 1
   }
