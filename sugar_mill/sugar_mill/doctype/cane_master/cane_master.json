@@ -36,6 +36,7 @@
   "states",
   "data_24",
   "route_km",
+  "route_name",
   "data_27",
   "survey_number",
   "crop_name",
@@ -59,6 +60,7 @@
   "data_35",
   "road_side",
   "supervisor_name",
+  "late_registration",
   "data_42",
   "longitude",
   "latitude",
@@ -434,12 +436,24 @@
    "fieldtype": "Link",
    "label": "Village",
    "options": "Village"
+  },
+  {
+   "fetch_from": "route.route",
+   "fieldname": "route_name",
+   "fieldtype": "Data",
+   "label": "Route Name"
+  },
+  {
+   "default": "0",
+   "fieldname": "late_registration",
+   "fieldtype": "Check",
+   "label": "Late Registration"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-20 10:05:06.974427",
+ "modified": "2024-01-12 11:07:27.778835",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Cane Master",

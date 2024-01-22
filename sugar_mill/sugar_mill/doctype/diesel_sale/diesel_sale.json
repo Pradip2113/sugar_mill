@@ -1,31 +1,46 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:DS-{party_name}-{season}-{##}",
  "creation": "2023-09-23 16:25:22.377788",
  "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "party_name",
-  "date",
-  "company",
-  "column_break_jyyeb",
   "season",
+  "date",
+  "column_break_ho2ai",
   "plant",
+  "company",
+  "section_break_1slgp",
+  "transporter",
+  "harvester",
+  "party_name",
+  "column_break_jyyeb",
+  "contract_id",
+  "customer_name",
   "section_break_rfipp",
   "diseal_sale_item",
   "amended_from",
-  "debit_to",
-  "cost_center"
+  "section_break_3swkl",
+  "total_diesel_allocated",
+  "column_break_0qa0y",
+  "total_distance_in_km",
+  "total__weight_in_ton",
+  "column_break_7ljti",
+  "total_allocated",
+  "column_break_yagso",
+  "total_diesel_allocation_remaining"
  ],
  "fields": [
   {
    "fieldname": "party_name",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Party Name",
+   "label": "Customer Id",
    "options": "Customer",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -80,28 +95,104 @@
    "fieldtype": "Section Break"
   },
   {
-   "default": "12520005 - Advance For Diesel - VPPL",
-   "fieldname": "debit_to",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Debit To ",
-   "options": "Account",
-   "reqd": 1
+   "fieldname": "column_break_ho2ai",
+   "fieldtype": "Column Break"
   },
   {
-   "fieldname": "cost_center",
+   "fieldname": "section_break_1slgp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "transporter",
+   "fieldtype": "Check",
+   "label": "Transporter"
+  },
+  {
+   "default": "0",
+   "fieldname": "harvester",
+   "fieldtype": "Check",
+   "label": "Harvester"
+  },
+  {
+   "fieldname": "contract_id",
    "fieldtype": "Link",
-   "label": "Cost Center",
-   "options": "Cost Center"
+   "label": "Contract Id",
+   "options": "H and T Contract"
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.transporter==1",
+   "fieldname": "total_distance_in_km",
+   "fieldtype": "Float",
+   "label": "Total Distance (In Km)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.harvester==1",
+   "fieldname": "total__weight_in_ton",
+   "fieldtype": "Float",
+   "label": "Total  Weight (In Ton)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_0qa0y",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_diesel_allocated",
+   "fieldtype": "Float",
+   "label": "Total Diesel Sold (In Liter)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_diesel_allocation_remaining",
+   "fieldtype": "Float",
+   "label": "Total Diesel Sale Remaining (In Liter)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_3swkl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_7ljti",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_allocated",
+   "fieldtype": "Float",
+   "label": "Total Diesel Allocated (In Liter)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_yagso",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2023-09-25 11:45:41.750086",
+ "links": [
+  {
+   "link_doctype": "Sales Invoice",
+   "link_fieldname": "diesel_sale_ref"
+  }
+ ],
+ "modified": "2024-01-13 15:44:33.775007",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Diesel Sale",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

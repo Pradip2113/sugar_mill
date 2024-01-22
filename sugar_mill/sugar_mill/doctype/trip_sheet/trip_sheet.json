@@ -221,15 +221,13 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Cane Deduction Type",
-   "options": "\nMatured Cane\nBurn Cane\nUnmatured Cane",
-   "reqd": 1
+   "options": "\nMatured Cane\nBurn Cane\nUnmatured Cane"
   },
   {
    "fieldname": "section_break_zqobq",
    "fieldtype": "Section Break"
   },
   {
-   "fetch_from": "transporter_code.vehicle_type",
    "fieldname": "vehicle_type",
    "fieldtype": "Link",
    "label": "Vehicle Type ",
@@ -250,7 +248,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "transporter_code.transporter_name",
    "fieldname": "transporter_name",
    "fieldtype": "Data",
    "label": "Transporter Name"
@@ -485,11 +482,13 @@
    "default": "0",
    "fieldname": "can_slip_flag",
    "fieldtype": "Int",
+   "hidden": 1,
    "label": "Can Slip Flag"
   },
   {
    "fieldname": "cane_slip",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Cane Slip"
   },
   {
@@ -500,6 +499,7 @@
    "fetch_from": "farmer_code.circle_office",
    "fieldname": "circle_office",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Circle Office"
   },
   {
@@ -518,11 +518,9 @@
    "label": "vendor code"
   },
   {
-   "fetch_from": "transporter_code.old_no",
    "fieldname": "old_transporter_code",
    "fieldtype": "Data",
-   "label": "Transporter Code",
-   "read_only": 1
+   "label": "Transporter Code"
   },
   {
    "fetch_from": "harvesting_code__ht.old_no",
@@ -534,13 +532,14 @@
   {
    "fieldname": "bas_pali_flag",
    "fieldtype": "Int",
+   "hidden": 1,
    "label": "Bas Pali Flag"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-26 11:46:16.819581",
+ "modified": "2024-01-05 18:31:32.335238",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Trip Sheet",

@@ -22,7 +22,7 @@ class HandTContract(Document):
 		moc.trolly_2 = self.trolly_2
 
 		doc=frappe.db.get_list("Branch",filters={"branch" : self.plant},fields=["name","cart_no"])
-		pre_cart_no=int(doc[0].get("cart_no"))
+		pre_cart_no=int(float(doc[0].get("cart_no")))
   
 		for i in range(pre_cart_no+1,int(self.total_vehicle)+pre_cart_no+1):
 			vehicle_detail = moc.append("vehicle_details_tab", {})
@@ -106,6 +106,7 @@ class HandTContract(Document):
 			
 	@frappe.whitelist()    
 	def get_bank_details(self):
+		self.transporter_info(self.transporter_code,"Transporter")
 		entity_types = [self.transporter_code]
 		for i in entity_types:
 			doc =frappe.db.get_list('Farmer List', filters={'name':i}, fields={'name'})
@@ -128,6 +129,22 @@ class HandTContract(Document):
 						}
 					)
     
+    
+	@frappe.whitelist()
+	def transporter_info(self,code,type):
+		if code:
+			doc=frappe.db.get_all('Farmer List', filters={'name':code}, fields={'name',"supplier_name"})
+			for i in doc:
+				self.append(
+						"diesel_calculation",
+						{
+							"diesel_id": i.name,
+							"diesel_owner_is":type,
+							"diesel_owner": i.supplier_name,
+						}
+					)
+				break
+        
     
 		
 

@@ -49,3 +49,13 @@ frappe.ui.form.on('Trip Sheet', {
         frm.set_value('transporter_code', tmt);
         }
 });
+
+
+frappe.ui.form.on('Trip Sheet', {
+	transporter_code: function(frm) {frm.call({
+			method:'get_transporter_info',//function name defined in python
+			doc: frm.doc, //current document
+		});
+		
+	}
+});

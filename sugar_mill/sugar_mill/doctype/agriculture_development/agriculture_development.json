@@ -58,46 +58,56 @@
   "total",
   "section_break_zzuqd",
   "basel_total",
+  "total_weight",
   "column_break_rfr1d",
   "pre_earthing_total",
+  "total_gst_amount",
   "column_break_li3nc",
   "earth_total",
+  "total_base_amount",
   "column_break_dfb8m",
   "rainy_total",
+  "total_amount",
   "column_break_na6bn",
   "ratoon_1_total",
   "column_break_mtlfv",
   "ratoon_2_total",
   "section_break_shwaw",
   "grantor",
-  "creator_name"
+  "creator_name",
+  "survey_number"
  ],
  "fields": [
   {
    "default": "0",
+   "depends_on": "eval:doc.sales_type == \"Fertilizer\"",
    "fieldname": "basel",
    "fieldtype": "Check",
    "label": "Basel"
   },
   {
    "default": "0",
+   "depends_on": "eval:doc.sales_type == \"Fertilizer\"",
    "fieldname": "pre_earthing",
    "fieldtype": "Check",
    "label": "Pre-Earthing"
   },
   {
    "default": "0",
+   "depends_on": "eval:doc.sales_type == \"Fertilizer\"",
    "fieldname": "earth",
    "fieldtype": "Check",
    "label": "Earth"
   },
   {
    "default": "0",
+   "depends_on": "eval:doc.sales_type == \"Fertilizer\"",
    "fieldname": "rainy",
    "fieldtype": "Check",
    "label": "Rainy"
   },
   {
+   "depends_on": "eval:doc.sales_type == \"Fertilizer\"",
    "fieldname": "update",
    "fieldtype": "Button",
    "label": "Update"
@@ -124,6 +134,7 @@
    "fieldtype": "Section Break"
   },
   {
+   "depends_on": "eval:doc.sales_type == \"Fertilizer\"",
    "fieldname": "agriculture_development_item",
    "fieldtype": "Table",
    "label": "Agriculture Development Item",
@@ -210,6 +221,7 @@
   },
   {
    "default": "0",
+   "depends_on": "eval:doc.sales_type == \"Fertilizer\"",
    "fieldname": "ratoon_1",
    "fieldtype": "Check",
    "label": "Ratoon 1"
@@ -220,6 +232,7 @@
   },
   {
    "default": "0",
+   "depends_on": "eval:doc.sales_type == \"Fertilizer\"",
    "fieldname": "ratoon_2",
    "fieldtype": "Check",
    "label": "Ratoon 2"
@@ -300,8 +313,8 @@
   {
    "fieldname": "nursery_supplier",
    "fieldtype": "Link",
-   "label": "Nursery Supplier ",
-   "options": "Supplier"
+   "label": "Supplier",
+   "options": "Farmer List"
   },
   {
    "fetch_from": "nursery_supplier.supplier_name",
@@ -310,6 +323,7 @@
    "label": "Supplier Name"
   },
   {
+   "depends_on": "eval:doc.sales_type != \"Fertilizer\"",
    "fieldname": "section_break_brlam",
    "fieldtype": "Section Break"
   },
@@ -339,6 +353,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "eval:doc.sales_type == \"Fertilizer\"",
    "fieldname": "basel_total",
    "fieldtype": "Float",
    "label": "basel total",
@@ -349,12 +364,14 @@
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "eval:doc.sales_type == \"Fertilizer\"",
    "fieldname": "pre_earthing_total",
    "fieldtype": "Float",
    "label": "pre earthing total",
    "precision": "2"
   },
   {
+   "depends_on": "eval:doc.sales_type == \"Fertilizer\"",
    "fieldname": "earth_total",
    "fieldtype": "Float",
    "label": "earth total",
@@ -369,6 +386,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "eval:doc.sales_type == \"Fertilizer\"",
    "fieldname": "rainy_total",
    "fieldtype": "Float",
    "label": "rainy total",
@@ -379,21 +397,24 @@
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "eval:doc.sales_type == \"Fertilizer\"",
    "fieldname": "ratoon_1_total",
    "fieldtype": "Float",
    "label": "ratoon 1 total",
    "precision": "2"
   },
   {
+   "depends_on": "eval:doc.sales_type == \"Fertilizer\"",
    "fieldname": "ratoon_2_total",
    "fieldtype": "Float",
    "label": "ratoon 2 total",
    "precision": "2"
   },
   {
+   "depends_on": "eval:doc.sales_type != \"Fertilizer\"",
    "fieldname": "agriculture_development_item2",
    "fieldtype": "Table",
-   "label": "Agriculture Development Item2",
+   "label": "Agriculture Development Item",
    "options": "Agriculture Development Item2"
   },
   {
@@ -405,6 +426,39 @@
   {
    "fieldname": "column_break_oqws0",
    "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.sales_type == \"Fertilizer\"",
+   "fieldname": "total_weight",
+   "fieldtype": "Float",
+   "label": "Total Weight"
+  },
+  {
+   "depends_on": "eval:doc.sales_type == \"Fertilizer\"",
+   "fieldname": "total_gst_amount",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Total GST Amount"
+  },
+  {
+   "depends_on": "eval:doc.sales_type == \"Fertilizer\"",
+   "fieldname": "total_base_amount",
+   "fieldtype": "Float",
+   "label": "Total Amount "
+  },
+  {
+   "depends_on": "eval:doc.sales_type == \"Fertilizer\"",
+   "fieldname": "total_amount",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Total Amount"
+  },
+  {
+   "fetch_from": "cane_registration_id.survey_number",
+   "fieldname": "survey_number",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Survey Number"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -415,7 +469,7 @@
    "link_fieldname": "agriculture_order"
   }
  ],
- "modified": "2023-10-17 14:19:35.984303",
+ "modified": "2023-12-28 19:38:38.380116",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Agriculture Development",

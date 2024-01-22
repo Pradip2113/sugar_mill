@@ -71,6 +71,7 @@
   "section_break_uezvb",
   "bank_details",
   "data_46",
+  "diesel_calculation",
   "labour_details",
   "rfid_tag",
   "last_cane_weight_entry",
@@ -470,6 +471,7 @@
    "options": "Contract Surety"
   },
   {
+   "allow_on_submit": 1,
    "fetch_from": "harvester_code.existing_supplier_code",
    "fieldname": "har_vendor_code",
    "fieldtype": "Data",
@@ -480,10 +482,12 @@
    "allow_on_submit": 1,
    "fieldname": "last_cane_weight_entry",
    "fieldtype": "Datetime",
+   "hidden": 1,
    "label": "Last Cane weight Entry",
    "read_only": 1
   },
   {
+   "allow_on_submit": 1,
    "default": "0",
    "fieldname": "bas_pali",
    "fieldtype": "Check",
@@ -493,21 +497,30 @@
    "allow_on_submit": 1,
    "fieldname": "last_cane_slip_entry",
    "fieldtype": "Datetime",
+   "hidden": 1,
    "label": "Last Cane Slip Entry",
    "read_only": 1
   },
   {
+   "allow_on_submit": 1,
    "fetch_from": "transporter_code.existing_supplier_code",
    "fieldname": "trans_vendor_code",
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Trans vendor code"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "diesel_calculation",
+   "fieldtype": "Table",
+   "label": "Diesel calculation",
+   "options": "Diesel Sale Calculation"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-09-26 14:41:01.640529",
+ "modified": "2024-01-08 18:07:16.429997",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "H and T Contract",

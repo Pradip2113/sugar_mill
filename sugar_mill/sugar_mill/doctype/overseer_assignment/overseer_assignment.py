@@ -6,8 +6,6 @@ from frappe.model.document import Document
 
 class OverseerAssignment(Document):
     
-    
-    
 	@frappe.whitelist()
 	def before_save(self):
 		self.for_overseer()
@@ -23,9 +21,9 @@ class OverseerAssignment(Document):
 		for d in self.get("circle_office_table_os"):
 			list.append(d.circle_office)
 		values_in_first_list = set(item['for_value'] for item in doc)
-		items_not_in_first_list = [value for value in list if value not in values_in_first_list]
+		items_not_in_first_list = set([value for value in list if value not in values_in_first_list])
 		filtered_list = [item for item in doc if item['for_value'] not in list]
-		
+		# frappe.throw(str(items_not_in_first_list))
 		for x in items_not_in_first_list:
 			user_permission = frappe.new_doc('User Permission')
 			user_permission.user = self.overseer
@@ -58,7 +56,7 @@ class OverseerAssignment(Document):
 			items_not_in_first_list = [value for value in list if value not in values_in_first_list]
 			filtered_list = [item for item in doc if item['for_value'] not in list]
 			
-			for x in items_not_in_first_list:
+			for x in list:
 				user_permission = frappe.new_doc('User Permission')
 				user_permission.user = do.field_man
 				user_permission.allow = 'Circle Office'

@@ -8,22 +8,20 @@ frappe.ui.form.on('Overseer Assignment', {
 });
 
 
-frappe.ui.form.on('Child Slip Boy Assignment Circle Office', {
-	circle_office: function(frm) {
-		frm.set_query("circle_office", "circle_office_table_os", function(doc, cdt, cdn) {
-			let d = locals[cdt][cdn];
-			var alreadyavailablevillageintable = [];
-			frm.doc.circle_office_table_os.forEach(function(row) {
-				alreadyavailablevillageintable.push(row.circle_office);
-			});
-			return {
-				filters: [['name', 'not in', alreadyavailablevillageintable],]
-			};
-		});
-
-
-	},
-});
+// frappe.ui.form.on('Child Slip Boy Assignment Circle Office', {
+// 	circle_office: function(frm) {
+// 		frm.set_query("circle_office", "circle_office_table_os", function(doc, cdt, cdn) {
+// 			let d = locals[cdt][cdn];
+// 			var alreadyavailablevillageintable = [];
+// 			frm.doc.circle_office_table_os.forEach(function(row) {
+// 				alreadyavailablevillageintable.push(row.circle_office);
+// 			});
+// 			return {
+// 				filters: [['name', 'not in', alreadyavailablevillageintable],]
+// 			};
+// 		});
+// 	},
+// });
 
 
 

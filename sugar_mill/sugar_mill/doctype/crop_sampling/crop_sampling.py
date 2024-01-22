@@ -25,13 +25,14 @@ class CropSampling(Document):
                     doc.crop_sample_id=self.name
                     doc.no_of_pairs=self.no_of_pairs
                     doc.id =self.id
-                    
+                
                     doc.average_brix = 0
                     doc.insert()
                     doc.save
                     moc = frappe.db.get_all("Crop Harvesting", fields=["name"], order_by="creation DESC", limit=1)
                     frappe.db.set_value("Crop Harvesting", moc[0].name, "plantation_status","To Harvesting")
                     frappe.msgprint(f"सॅम्पलिंग पूर्ण झाले")
+                    print(f"सॅम्पलिंग पूर्ण झाले")
                     frappe.msgprint(f"{self.id} तोडणीसाठी जाऊ शकतो.")
                     self.plantation_status="To Harvesting"
                     frappe.db.set_value("Cane Master", self.id ,"plantation_status", "To Harvesting")
@@ -40,6 +41,7 @@ class CropSampling(Document):
                     # frappe.msgprint(f" {self.id}  चा तोडणीसाठीचा कालावधी पूर्ण झालेला नाही.")
             else:
                 frappe.msgprint(f"{self.id} तोडणीसाठी गेला आहे.")
+                print(f"{self.id} तोडणीसाठी गेला आहे.")
                 
             # frappe.msgprint(f"तुमचे सरासरी ब्रिक्स {from_brix} ते {to_brix} दरम्यान असणे आवश्यक आहे आणि जोड्यांची संख्या {from_pairs} ते {to_pairs} दरम्यान असणे आवश्यक आहे")
         # for s in sam:

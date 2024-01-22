@@ -29,6 +29,16 @@ frappe.ui.form.on('Cane Master', {
 });
 
 frappe.ui.form.on('Cane Master', {
+    after_save: function(frm) {
+        frm.call({
+        method:'late_entry',//function name defined in python
+        doc: frm.doc, //current document
+        });
+        
+    }
+});
+
+frappe.ui.form.on('Cane Master', {
 	onload(frm) {
 	    function onPositionRecieved(position){
             var longitude= position.coords.longitude;

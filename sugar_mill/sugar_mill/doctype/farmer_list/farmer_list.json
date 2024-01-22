@@ -37,6 +37,10 @@
   "is_farmer",
   "column_break_ynarg",
   "is_member",
+  "column_break_uujk7",
+  "drip",
+  "column_break_pyl7q",
+  "nursery",
   "address_section",
   "crop_type",
   "village",
@@ -45,17 +49,17 @@
   "column_break_85isa",
   "taluka",
   "column_break_ejtaq",
-  "pin_code",
-  "column_break_eu2tr",
   "state",
+  "column_break_eu2tr",
+  "pin_code",
   "document_attach_section",
   "aadhaar_card",
   "column_break_6df0w",
-  "bank_passbook",
-  "column_break_edx7q",
   "pan_card",
-  "column_break_mdq8w",
+  "column_break_edx7q",
   "consent_letter",
+  "column_break_mdq8w",
+  "bank_passbook",
   "bank_detail_section",
   "bank_details",
   "cane_registration_flag",
@@ -728,6 +732,26 @@
    "fieldname": "cane_registration_flag",
    "fieldtype": "Int",
    "label": "Cane Registration Flag"
+  },
+  {
+   "fieldname": "column_break_uujk7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "drip",
+   "fieldtype": "Check",
+   "label": "Drip"
+  },
+  {
+   "fieldname": "column_break_pyl7q",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "nursery",
+   "fieldtype": "Check",
+   "label": "Nursery"
   }
  ],
  "icon": "fa fa-user",
@@ -739,7 +763,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2023-10-12 18:09:28.596073",
+ "modified": "2023-12-28 18:51:42.084463",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Farmer List",

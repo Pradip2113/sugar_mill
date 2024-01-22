@@ -76,5 +76,49 @@ class CaneMaster(Document):
 					frappe.db.set_value("Crop Harvesting", n.name, "road_side",self.road_side)
 					frappe.db.set_value("Crop Harvesting", n.name, "supervisor_name",self.supervisor_name)
 					frappe.db.set_value("Crop Harvesting", n.name, "plantation_system",self.plantation_system)
-    
+     
+     
+     
+	@frappe.whitelist()
+	def late_entry(self):
+		if(self.plantation_status =="New"):
+				list = frappe.get_all("Add To Sampling", filters={"from_date": ["<=", self.plantattion_ratooning_date], "to_date": [">=", self.plantattion_ratooning_date], "season": self.season}, fields=["name"])
+				frappe.msgprint(str(list))
+				for i in list:
+					doc=frappe.get_doc("Add To Sampling",i.name)
+					doc.append("crop_variety",{'crop_variety_link':self.crop_variety},)
+					doc.append("crop_type",{'crop_type_link':self.crop_type},)
+					doc.append("circle_office",{'circle_office_link':self.circle_office},)
+					doc.append("village",{'village_link':self.area},)
+					doc.run_method("list")
+					doc.run_method("selectall")
+					doc.direct_for_harvesting =1
+					doc.save()
+		else:
+			pass
+
+
+
+@frappe.whitelist()
+def late_reg(name):
+	cane_doc=frappe.get_doc("Cane Master",name)
+	if(cane_doc.plantation_status =="New"):
+			list = frappe.get_all("Add To Sampling", filters={"from_date": ["<=", cane_doc.plantattion_ratooning_date], "to_date": [">=", cane_doc.plantattion_ratooning_date], "season": cane_doc.season}, fields=["name"])
+			frappe.msgprint(str(list))
+			for i in list:
+				doc=frappe.get_doc("Add To Sampling",i.name)
+				doc.append("crop_variety",{'crop_variety_link':cane_doc.crop_variety},)
+				doc.append("crop_type",{'crop_type_link':cane_doc.crop_type},)
+				doc.append("circle_office",{'circle_office_link':cane_doc.circle_office},)
+				doc.append("village",{'village_link':cane_doc.area},)
+				doc.run_method("list")
+				doc.run_method("selectall")
+				doc.direct_for_harvesting =1
+				doc.save()
+	else:
+		pass				
+
+
+
 				
+		

@@ -11,6 +11,29 @@ frappe.ui.form.on('Agriculture Development', {
         }
     });
 
+frappe.ui.form.on('Agriculture Development', {
+    sales_type: function(frm) {
+        frm.set_query("nursery_supplier", function(doc) {
+            var filters = [];
+
+            if (frm.doc.sales_type === 'Drip') {
+                // Apply first filter when sales_type is Drip
+                filters.push(['Farmer List', 'drip', '=', 1]);
+                filters.push(['Farmer List', 'workflow_state', '=', "Approved"]);
+            } else {
+                // Apply second filter for other sales_type values
+                filters.push(['Farmer List', 'nursery', '=', 1]);
+                filters.push(['Farmer List', 'workflow_state', '=', 'Approved']);
+                // Add more filters as needed for the second condition
+            }
+            return {
+                filters: filters
+            };
+        });
+        frm.fields_dict['nursery_supplier'].df.label = __(frm.doc.sales_type);
+        refresh_field("nursery_supplier");
+    },
+})
 
 frappe.ui.form.on('Agriculture Development', {
 	update(frm) {
@@ -207,6 +230,99 @@ frappe.ui.form.on('Agriculture Development', {
 //         };
 //     }
 // });
+frappe.ui.form.on("Agriculture Development Item", 
+    "basel", function(frm, cdt, cdn) {
+     var d = locals[cdt][cdn];
+     if(d.qty >= 0 && d.rate >= 0){
+        var result = ((d.qty * d.rate)).toFixed(2);
+        frappe.model.set_value(cdt, cdn, 'base_amount', result);
+    }
+});
+frappe.ui.form.on("Agriculture Development Item", 
+    "pre_earthing", function(frm, cdt, cdn) {
+     var d = locals[cdt][cdn];
+     if(d.qty >= 0 && d.rate >= 0){
+        var result = ((d.qty * d.rate)).toFixed(2);
+        frappe.model.set_value(cdt, cdn, 'base_amount', result);
+    }
+});
+frappe.ui.form.on("Agriculture Development Item", 
+"earth", function(frm, cdt, cdn) {
+ var d = locals[cdt][cdn];
+ if(d.qty >= 0 && d.rate >= 0){
+    var result = ((d.qty * d.rate)).toFixed(2);
+    frappe.model.set_value(cdt, cdn, 'base_amount', result);
+}
+});
+frappe.ui.form.on("Agriculture Development Item", 
+"rainy", function(frm, cdt, cdn) {
+ var d = locals[cdt][cdn];
+ if(d.qty >= 0 && d.rate >= 0){
+    var result = ((d.qty * d.rate)).toFixed(2);
+    frappe.model.set_value(cdt, cdn, 'base_amount', result);
+}
+});
+frappe.ui.form.on("Agriculture Development Item", 
+"ratoon_1", function(frm, cdt, cdn) {
+ var d = locals[cdt][cdn];
+ if(d.qty >= 0 && d.rate >= 0){
+    var result = ((d.qty * d.rate)).toFixed(2);
+    frappe.model.set_value(cdt, cdn, 'base_amount', result);
+}
+});
+frappe.ui.form.on("Agriculture Development Item", 
+"ratoon_2", function(frm, cdt, cdn) {
+ var d = locals[cdt][cdn];
+ if(d.qty >= 0 && d.rate >= 0){
+    var result = ((d.qty * d.rate)).toFixed(2);
+    frappe.model.set_value(cdt, cdn, 'base_amount', result);
+}
+});
+
+frappe.ui.form.on("Agriculture Development Item", 
+    "basel", function(frm, cdt, cdn) {
+     var d = locals[cdt][cdn];
+     if(d.qty >= 0 && d.weight_per_unit >= 0){
+        var result = ((d.qty * d.weight_per_unit)).toFixed(2);
+        frappe.model.set_value(cdt, cdn, 'total_weight', result);
+    }
+});
+frappe.ui.form.on("Agriculture Development Item", 
+    "pre_earthing", function(frm, cdt, cdn) {
+     var d = locals[cdt][cdn];
+     if(d.qty >= 0 && d.weight_per_unit >= 0){
+        var result = ((d.qty * d.weight_per_unit)).toFixed(2);
+        frappe.model.set_value(cdt, cdn, 'total_weight', result);
+    }
+});frappe.ui.form.on("Agriculture Development Item", 
+"earth", function(frm, cdt, cdn) {
+ var d = locals[cdt][cdn];
+ if(d.qty >= 0 && d.weight_per_unit >= 0){
+    var result = ((d.qty * d.weight_per_unit)).toFixed(2);
+    frappe.model.set_value(cdt, cdn, 'total_weight', result);
+}
+});frappe.ui.form.on("Agriculture Development Item", 
+"rainy", function(frm, cdt, cdn) {
+ var d = locals[cdt][cdn];
+ if(d.qty >= 0 && d.weight_per_unit >= 0){
+    var result = ((d.qty * d.weight_per_unit)).toFixed(2);
+    frappe.model.set_value(cdt, cdn, 'total_weight', result);
+}
+});frappe.ui.form.on("Agriculture Development Item", 
+"ratoon_1", function(frm, cdt, cdn) {
+ var d = locals[cdt][cdn];
+ if(d.qty >= 0 && d.weight_per_unit >= 0){
+    var result = ((d.qty * d.weight_per_unit)).toFixed(2);
+    frappe.model.set_value(cdt, cdn, 'total_weight', result);
+}
+});frappe.ui.form.on("Agriculture Development Item", 
+"ratoon_2", function(frm, cdt, cdn) {
+ var d = locals[cdt][cdn];
+ if(d.qty >= 0 && d.weight_per_unit >= 0){
+    var result = ((d.qty * d.weight_per_unit)).toFixed(2);
+    frappe.model.set_value(cdt, cdn, 'total_weight', result);
+}
+});
 
 frappe.ui.form.on("Agriculture Development Item2", 
     "qty", function(frm, cdt, cdn) {
@@ -226,7 +342,6 @@ frappe.ui.form.on("Agriculture Development Item2",
 });
 
 
-
 frappe.ui.form.on("Agriculture Development", {
     before_save:function(frm, cdt, cdn){
         debugger
@@ -238,6 +353,8 @@ frappe.ui.form.on("Agriculture Development", {
     var ran = 0.0;
     var rot1 = 0.0;
     var rot2 = 0.0;
+    var totalweight=0.0
+    var total=0.0
     debugger
     frm.doc.agriculture_development_item.forEach(function(d) { total1 += parseFloat(d.qty); });
     frm.doc.agriculture_development_item.forEach(function(d) { bsl += parseFloat(d.basel); });
@@ -246,11 +363,13 @@ frappe.ui.form.on("Agriculture Development", {
     frm.doc.agriculture_development_item.forEach(function(d) { ran += parseFloat(d.rainy); });
     frm.doc.agriculture_development_item.forEach(function(d) { rot1 += parseFloat(d.ratoon_1); });
     frm.doc.agriculture_development_item.forEach(function(d) { rot2 += parseFloat(d.ratoon_2); });
+    frm.doc.agriculture_development_item.forEach(function(d) { totalweight += parseFloat(d.total_weight); });
+    frm.doc.agriculture_development_item.forEach(function(d) { total += parseFloat(d.base_amount); });
     frm.set_value("total", total1); frm.set_value("basel_total",bsl); frm.set_value("pre_earthing_total",pri);
     frm.set_value("earth_total",ear); frm.set_value("rainy_total",ran); frm.set_value("ratoon_1_total",rot1);
-    frm.set_value("ratoon_2_total",rot2);
+    frm.set_value("ratoon_2_total",rot2);frm.set_value("total_weight",totalweight);frm.set_value("total_base_amount",total);
     refresh_field("total"); refresh_field("basel_total"); refresh_field("pre_earthing_total"); refresh_field("earth_total");
-    refresh_field("rainy_total"); refresh_field("ratoon_1_total"); refresh_field("ratoon_2_total");
+    refresh_field("rainy_total"); refresh_field("ratoon_1_total"); refresh_field("ratoon_2_total");refresh_field("total_weight");refresh_field("total_base_amount");
   },
   update:function(frm, cdt, cdn){
     var d = locals[cdt][cdn];
@@ -262,6 +381,8 @@ frappe.ui.form.on("Agriculture Development", {
     var ran = 0.0;
     var rot1 = 0.0;
     var rot2 = 0.0;
+    var totalweight=0.0
+    var total=0.0
     frm.doc.agriculture_development_item.forEach(function(d) { total1 += parseFloat(d.qty); });
     frm.doc.agriculture_development_item.forEach(function(d) { bsl += parseFloat(d.basel); });
     frm.doc.agriculture_development_item.forEach(function(d) { pri += parseFloat(d.pre_earthing); });
@@ -269,11 +390,13 @@ frappe.ui.form.on("Agriculture Development", {
     frm.doc.agriculture_development_item.forEach(function(d) { ran += parseFloat(d.rainy); });
     frm.doc.agriculture_development_item.forEach(function(d) { rot1 += parseFloat(d.ratoon_1); });
     frm.doc.agriculture_development_item.forEach(function(d) { rot2 += parseFloat(d.ratoon_2); });
+    frm.doc.agriculture_development_item.forEach(function(d) { totalweight += parseFloat(d.total_weight); });
+    frm.doc.agriculture_development_item.forEach(function(d) { total += parseFloat(d.base_amount); });
     frm.set_value("total", total1); frm.set_value("basel_total",bsl); frm.set_value("pre_earthing_total",pri);
     frm.set_value("earth_total",ear); frm.set_value("rainy_total",ran); frm.set_value("ratoon_1_total",rot1);
-    frm.set_value("ratoon_2_total",rot2);
+    frm.set_value("ratoon_2_total",rot2);frm.set_value("total_weight",totalweight);frm.set_value("total_base_amount",total);
     refresh_field("total"); refresh_field("basel_total"); refresh_field("pre_earthing_total"); refresh_field("earth_total");
-    refresh_field("rainy_total"); refresh_field("ratoon_1_total"); refresh_field("ratoon_2_total");
+    refresh_field("rainy_total"); refresh_field("ratoon_1_total"); refresh_field("ratoon_2_total");refresh_field("total_weight");refresh_field("total_base_amount");
   },
   agriculture_development_item_remove:function(frm, cdt, cdn){
     debugger
@@ -285,6 +408,8 @@ frappe.ui.form.on("Agriculture Development", {
     var ran = 0.0;
     var rot1 = 0.0;
     var rot2 = 0.0;
+    var totalweight=0.0
+    var total=0.0
     frm.doc.agriculture_development_item.forEach(function(d) { total1 += parseFloat(d.qty); });
     frm.doc.agriculture_development_item.forEach(function(d) { bsl += parseFloat(d.basel); });
     frm.doc.agriculture_development_item.forEach(function(d) { pri += parseFloat(d.pre_earthing); });
@@ -292,11 +417,13 @@ frappe.ui.form.on("Agriculture Development", {
     frm.doc.agriculture_development_item.forEach(function(d) { ran += parseFloat(d.rainy); });
     frm.doc.agriculture_development_item.forEach(function(d) { rot1 += parseFloat(d.ratoon_1); });
     frm.doc.agriculture_development_item.forEach(function(d) { rot2 += parseFloat(d.ratoon_2); });
+    frm.doc.agriculture_development_item.forEach(function(d) { totalweight += parseFloat(d.total_weight); });
+    frm.doc.agriculture_development_item.forEach(function(d) { total += parseFloat(d.base_amount); });
     frm.set_value("total", total1); frm.set_value("basel_total",bsl); frm.set_value("pre_earthing_total",pri);
     frm.set_value("earth_total",ear); frm.set_value("rainy_total",ran); frm.set_value("ratoon_1_total",rot1);
-    frm.set_value("ratoon_2_total",rot2);
+    frm.set_value("ratoon_2_total",rot2);frm.set_value("total_weight",totalweight);frm.set_value("total_base_amount",total);
     refresh_field("total"); refresh_field("basel_total"); refresh_field("pre_earthing_total"); refresh_field("earth_total");
-    refresh_field("rainy_total"); refresh_field("ratoon_1_total"); refresh_field("ratoon_2_total");
+    refresh_field("rainy_total"); refresh_field("ratoon_1_total"); refresh_field("ratoon_2_total");refresh_field("total_weight");refresh_field("total_base_amount");
   },
 });
 

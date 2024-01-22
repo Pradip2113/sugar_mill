@@ -66,6 +66,7 @@ frappe.ui.form.on('Bank Details', {
 
 	}
 });
+
 frappe.ui.form.on('Bank Details', {
 	harvester: function(frm) {
 		frm.call({

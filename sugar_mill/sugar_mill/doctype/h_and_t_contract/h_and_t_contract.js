@@ -93,22 +93,54 @@ frappe.ui.form.on('H and T Contract', {
 	old_no: function(frm) {
         frm.clear_table("bank_details")
 		frm.refresh_field('bank_details')
+      
 		frm.call({
 			method:'get_bank_details',//function name defined in python
-			doc: frm.doc, //current document
+			doc: frm.doc,//current document
 		});
 		
 	}
 });
 
+frappe.ui.form.on('H and T Contract', {
+	old_no: function(frm) {
+		frm.call({
+			method:'transporter_info',//function name defined in python
+			doc: frm.doc,
+            args: {
+                code: frm.doc.harvester_code,
+                type:"Harvester"
+            }, //current document
+		});
+		
+	}
+});
 
 frappe.ui.form.on('H and T Contract', {
 	transporter_code: function(frm) {
         frm.clear_table("bank_details")
 		frm.refresh_field('bank_details')
 		frm.call({
-			method:'get_bank_details',//function name defined in python
-			doc: frm.doc, //current document
+			method:'transporter_info',//function name defined in python
+			doc: frm.doc,
+            args: {
+                code: frm.doc.harvester_code,
+                type:"Harvester"
+            }, //current document
+		});
+		
+	}
+});
+
+frappe.ui.form.on('H and T Contract', {
+	harvester_code: function(frm) {
+		frm.call({
+			method:'transporter_info',//function name defined in python
+			doc: frm.doc,
+            args: {
+                code: frm.doc.harvester_code,
+                type:"Harvester"
+            }, //current document
 		});
 		
 	}

@@ -145,6 +145,7 @@ class AddToSampling(Document):
         value = 0 if all_selected else 1
         for child in children:
             child.check = value
+            
     @frappe.whitelist()
     def before_save(self):
         for row in self.get("cane_master_data"):
