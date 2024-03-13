@@ -66,12 +66,13 @@
   {
    "fieldname": "button",
    "fieldtype": "Button",
+   "hidden": 1,
    "label": "button"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-06 12:51:31.097155",
+ "modified": "2024-02-02 10:28:46.178186",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Overseer Assignment",
@@ -91,7 +92,9 @@
    "write": 1
   }
  ],
+ "search_fields": "overseer",
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "overseer_name"
 }

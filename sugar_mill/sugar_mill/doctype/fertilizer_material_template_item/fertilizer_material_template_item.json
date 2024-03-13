@@ -1,7 +1,7 @@
 {
  "actions": [],
  "autoname": "hash",
- "creation": "2023-06-11 17:25:29.101942",
+ "creation": "2024-02-27 10:03:49.891198",
  "default_view": "List",
  "doctype": "DocType",
  "document_type": "Setup",
@@ -27,8 +27,7 @@
   "rate_and_amount_section_break",
   "rate",
   "col_break3",
-  "amount",
-  "temp_qty"
+  "amount"
  ],
  "fields": [
   {
@@ -52,6 +51,7 @@
    "fieldname": "item_name",
    "fieldtype": "Data",
    "in_global_search": 1,
+   "in_list_view": 1,
    "label": "Item Name",
    "oldfieldname": "item_name",
    "oldfieldtype": "Data",
@@ -70,7 +70,6 @@
    "columns": 2,
    "fieldname": "schedule_date",
    "fieldtype": "Date",
-   "in_list_view": 1,
    "label": "Required By",
    "oldfieldname": "schedule_date",
    "oldfieldtype": "Date",
@@ -121,11 +120,19 @@
    "read_only": 1
   },
   {
+   "fetch_from": "item_code.gst_hsn_code",
+   "fieldname": "hsn_code",
+   "fieldtype": "Link",
+   "label": "HSN Code",
+   "options": "GST HSN Code"
+  },
+  {
    "fieldname": "col_break2",
    "fieldtype": "Column Break"
   },
   {
    "columns": 1,
+   "fetch_from": "item_code.stock_uom",
    "fieldname": "uom",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -166,8 +173,7 @@
    "fieldname": "rate",
    "fieldtype": "Currency",
    "label": "Rate",
-   "print_hide": 1,
-   "reqd": 1
+   "print_hide": 1
   },
   {
    "fieldname": "col_break3",
@@ -179,28 +185,15 @@
    "label": "Amount",
    "print_hide": 1,
    "read_only": 1
-  },
-  {
-   "fetch_from": "item_code.gst_hsn_code",
-   "fieldname": "hsn_code",
-   "fieldtype": "Link",
-   "label": "HSN Code",
-   "options": "GST HSN Code"
-  },
-  {
-   "fieldname": "temp_qty",
-   "fieldtype": "Float",
-   "label": "temp Qty",
-   "precision": "2"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-02-27 11:17:27.574232",
+ "modified": "2024-02-27 11:39:38.782907",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
- "name": "Fertilizer Material Request Item",
+ "name": "Fertilizer Material Template Item",
  "naming_rule": "Random",
  "owner": "Administrator",
  "permissions": [],

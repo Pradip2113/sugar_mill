@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"UO17_Hw5xI\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Vendor Registration\",\"col\":3}},{\"id\":\"erKHZTVldD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cane Registration \",\"col\":3}},{\"id\":\"4faUMzZHry\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"H and T Contract\",\"col\":3}},{\"id\":\"qfA5wKIbwH\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Agriculture Development\",\"col\":3}},{\"id\":\"vtGvZ7pTCN\",\"type\":\"card\",\"data\":{\"card_name\":\"Master\",\"col\":3}},{\"id\":\"jbID6wNf8O\",\"type\":\"card\",\"data\":{\"card_name\":\"Farm Master\",\"col\":3}},{\"id\":\"8glf4HD18P\",\"type\":\"card\",\"data\":{\"card_name\":\"Process Step\",\"col\":3}},{\"id\":\"bGEWF_6Zcy\",\"type\":\"card\",\"data\":{\"card_name\":\"Formula\",\"col\":3}},{\"id\":\"ednssoIEsd\",\"type\":\"card\",\"data\":{\"card_name\":\"Cane Billing\",\"col\":3}},{\"id\":\"4nHWgq4JaE\",\"type\":\"card\",\"data\":{\"card_name\":\"Farmer Loan\",\"col\":3}}]",
+ "content": "[{\"id\":\"UO17_Hw5xI\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Vendor Registration\",\"col\":3}},{\"id\":\"erKHZTVldD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cane Registration \",\"col\":3}},{\"id\":\"4faUMzZHry\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"H and T Contract\",\"col\":3}},{\"id\":\"qfA5wKIbwH\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Agriculture Development\",\"col\":3}},{\"id\":\"vtGvZ7pTCN\",\"type\":\"card\",\"data\":{\"card_name\":\"Master\",\"col\":3}},{\"id\":\"jbID6wNf8O\",\"type\":\"card\",\"data\":{\"card_name\":\"Farm Master\",\"col\":3}},{\"id\":\"8glf4HD18P\",\"type\":\"card\",\"data\":{\"card_name\":\"Process Step\",\"col\":3}},{\"id\":\"bGEWF_6Zcy\",\"type\":\"card\",\"data\":{\"card_name\":\"Formula\",\"col\":3}},{\"id\":\"ednssoIEsd\",\"type\":\"card\",\"data\":{\"card_name\":\"Cane Billing\",\"col\":3}},{\"id\":\"4nHWgq4JaE\",\"type\":\"card\",\"data\":{\"card_name\":\"Farmer Loan\",\"col\":3}},{\"id\":\"K8TIVghK7o\",\"type\":\"card\",\"data\":{\"card_name\":\"Sugar Delivery\",\"col\":4}}]",
  "creation": "2023-03-29 13:21:03.253684",
  "custom_blocks": [],
  "docstatus": 0,
@@ -204,84 +204,6 @@
    "label": "Account Priority",
    "link_count": 0,
    "link_to": "Branch",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Process Step",
-   "link_count": 7,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Add To Sampling",
-   "link_count": 0,
-   "link_to": "Add To Sampling",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Crop Sampling",
-   "link_count": 0,
-   "link_to": "Crop Sampling",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Trip Sheet",
-   "link_count": 0,
-   "link_to": "Trip Sheet",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Back To Sampling",
-   "link_count": 0,
-   "link_to": "Back To Sampling",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Fertilizer Material Request",
-   "link_count": 0,
-   "link_to": "Fertilizer Material Request",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Cane Slip",
-   "link_count": 0,
-   "link_to": "Cane Inward Slip",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Cane Weight",
-   "link_count": 0,
-   "link_to": "Cane Weight",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -539,10 +461,156 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Process Step",
+   "link_count": 8,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Add To Sampling",
+   "link_count": 0,
+   "link_to": "Add To Sampling",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Crop Sampling",
+   "link_count": 0,
+   "link_to": "Crop Sampling",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Trip Sheet",
+   "link_count": 0,
+   "link_to": "Trip Sheet",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Back To Sampling",
+   "link_count": 0,
+   "link_to": "Back To Sampling",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Fertilizer Material Request",
+   "link_count": 0,
+   "link_to": "Fertilizer Material Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cane Slip",
+   "link_count": 0,
+   "link_to": "Cane Inward Slip",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cane Weight",
+   "link_count": 0,
+   "link_to": "Cane Weight",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Purchase Receipt",
+   "link_count": 0,
+   "link_to": "Purchase Receipt",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sugar Delivery",
+   "link_count": 5,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Release Order",
+   "link_count": 0,
+   "link_to": "Quota",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sugar Allotment Order",
+   "link_count": 0,
+   "link_to": "Sugar Allotment Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Delivery Order",
+   "link_count": 0,
+   "link_to": "Sales Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Delivery Challan",
+   "link_count": 0,
+   "link_to": "Delivery Note",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sales Invoice",
+   "link_count": 0,
+   "link_to": "Sales Invoice",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2023-10-12 17:09:22.362623",
- "modified_by": "soham.pawar@erpdata.in",
+ "modified": "2024-02-22 12:13:51.400641",
+ "modified_by": "tejal.kumbhar@erpdata.in",
  "module": "Sugar Mill",
  "name": "Sugar Mill",
  "number_cards": [],

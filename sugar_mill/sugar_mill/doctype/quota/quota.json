@@ -9,14 +9,16 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
+  "enabled",
+  "section_break_3hc7g",
   "reference_number",
   "reference_date",
+  "season",
   "column_break_3",
   "branch",
-  "date",
   "from_date",
   "column_break_6",
-  "season",
+  "date",
   "to_date",
   "section_break_9",
   "items",
@@ -31,7 +33,8 @@
   {
    "fieldname": "reference_number",
    "fieldtype": "Data",
-   "label": "Reference Number"
+   "label": "Reference Number",
+   "reqd": 1
   },
   {
    "fieldname": "reference_date",
@@ -101,6 +104,7 @@
   {
    "fieldname": "season",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Season",
    "options": "Season"
   },
@@ -123,12 +127,28 @@
    "fieldtype": "Table",
    "label": "Quota Item",
    "options": "Quota Item"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "section_break_3hc7g",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2023-06-12 14:59:27.069292",
+ "links": [
+  {
+   "link_doctype": "Sugar Allotment Order",
+   "link_fieldname": "release_order"
+  }
+ ],
+ "modified": "2024-02-21 13:01:54.996764",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Quota",
@@ -136,6 +156,8 @@
  "owner": "Administrator",
  "permissions": [
   {
+   "amend": 1,
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,

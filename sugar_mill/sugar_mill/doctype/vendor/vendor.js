@@ -22,10 +22,8 @@ frappe.ui.form.on('Vendor', {
 		fields: ['supplier_name', 'workflow_state', 'aadhaar_number', 'supplier_group', 'village', 'circle_office', 'name', 'existing_supplier_code', 'is_farmer', 'is_transporter', 'is_harvester'],
 		limit_start: (page_number - 1) * page_length,
 		limit_page_length: page_length,
-		filters: {
-		  'supplier_name': ['like', '%' + vendor_name + '%']
-		},
-        order_by:'workflow_state desc'
+		filters: {'supplier_name': ['like', '%' + vendor_name + '%']},
+        order_by:"FIELD(workflow_state, 'Pending For Agriculture Officer', 'Rejected', 'Pending','Approved','New')",
 	  },
 	  callback: function(response) {
 		var data = response.message;

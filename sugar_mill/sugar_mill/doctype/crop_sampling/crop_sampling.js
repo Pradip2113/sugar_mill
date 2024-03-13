@@ -37,7 +37,6 @@ frappe.ui.form.on('Crop Sampling', {
 		method:'validation_for_Pairs',//function name defined in python
 		doc: frm.doc, //current document
 		});
-		
 	}
 });
 

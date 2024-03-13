@@ -182,9 +182,28 @@ class AgricultureDevelopment(Document):
 		else :
 			return 0
 		return data
-  
+
+	@frappe.whitelist()
+	def get_item_pricelist_rate(self,item_code):
+		item_price = frappe.get_all(
+			"Item Price",
+			filters={"item_code": item_code},
+			fields=["price_list_rate"],
+			order_by="creation desc",  # Add this to get the latest price
+			limit=1  # Add this to get only the latest price
+		)
+		if item_price:
+			return item_price[0].get("price_list_rate", 0)
+		else:
+			return 0.0
 
 
+	@frappe.whitelist()
+	def set_price_in_child_table(self):
+		table = self.get('agriculture_development_item2')
+		for d in  table:
+			if d.item_code:
+				d.rate = self.get_item_pricelist_rate(d.item_code)
 	# @frappe.whitelist()
 	# def Calculate_Fertilizer(self,doctype,basel,preeathing,earth,rainy,ratoon1,ratoon2,area,croptype,cropvariety,areafixed,areagunta):
 		

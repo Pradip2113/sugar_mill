@@ -312,22 +312,26 @@
    "fieldtype": "Link",
    "label": "Supervisor Name (\u092a\u0930\u094d\u092f\u0935\u0947\u0915\u094d\u0937\u0915\u093e\u091a\u0947 \u0928\u093e\u0935)",
    "options": "User",
+   "read_only": 1,
    "reqd": 1
   },
   {
    "fieldname": "longitude",
    "fieldtype": "Data",
-   "label": "Longitude "
+   "label": "Longitude ",
+   "read_only": 1
   },
   {
    "fieldname": "latitude",
    "fieldtype": "Data",
-   "label": "Latitude"
+   "label": "Latitude",
+   "read_only": 1
   },
   {
    "fieldname": "city",
    "fieldtype": "Data",
-   "label": "City"
+   "label": "Address",
+   "read_only": 1
   },
   {
    "fieldname": "state",
@@ -447,13 +451,14 @@
    "default": "0",
    "fieldname": "late_registration",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Late Registration"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-12 11:07:27.778835",
+ "modified": "2024-03-08 10:38:04.577665",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Cane Master",

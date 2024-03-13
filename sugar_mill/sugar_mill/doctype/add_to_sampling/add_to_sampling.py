@@ -33,7 +33,7 @@ class AddToSampling(Document):
         #     frappe.throw("Please fill up crop_type")
 
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        filters={"plantation_status":"New"}
+        filters={"plantation_status":"New","is_kisan_card":self.is_kisan_card}
         if circle_office_list:
             filters["circle_office"] = ["in", list(circle_office_list)]
         if village_list:
@@ -50,6 +50,7 @@ class AddToSampling(Document):
             "Cane Master",
             filters=filters,
             fields=[
+                "is_kisan_card",
                 "plant_name",
                 "grower_name",
                 "grower_code",
@@ -64,6 +65,7 @@ class AddToSampling(Document):
                 "crop_type",
                 "docstatus",
                 "area"
+                
             ],
         )   
         if not self.select_all_records_for_sampling:
@@ -151,6 +153,7 @@ class AddToSampling(Document):
         for row in self.get("cane_master_data"):
             if row.check and not self.direct_for_harvesting:
                 doc = frappe.get_all("Crop Sampling",filters={"id": row.id,},fields=[ "name"],)
+                # frappe.throw(str(doc))
                 if not doc:
 # frappe.msgprint(str(row.parent))
                     doc = frappe.new_doc("Crop Sampling")

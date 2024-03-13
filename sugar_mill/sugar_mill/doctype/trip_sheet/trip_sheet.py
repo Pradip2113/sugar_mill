@@ -24,7 +24,7 @@ class TripSheet(Document):
 	def carthdata(self):
 		vehireg = frappe.get_all('Vehicle Registration item',filters={'cart_no': self.cartno}, fields={'parent','driver_name','cart_no','season'})
 		for m in vehireg:
-			htget = frappe.get_all('H and T Contract', filters={'old_no': m.parent}, fields={'name','gang_type','vehicle_no','circle','old_no','new_h_t_no','transporter_name','harvester_code','harvester_name','vehicle_type','transporter_code'})
+			htget = frappe.get_all('H and T Contract', filters={'name': m.parent}, fields={'name','gang_type','vehicle_no','circle','old_no','new_h_t_no','transporter_name','harvester_code','harvester_name','vehicle_type','transporter_code'})
 			for j in htget:
 				self.old_transporter_code=j.old_no
 				self.vehicle_type=j.vehicle_type
@@ -78,7 +78,7 @@ def cartlist(cartno):
     vehireg = frappe.get_all('Vehicle Registration item', filters={'cart_no': cartno}, fields={'parent','driver_name','cart_no','season'})
 
     for m in vehireg:
-        htget = frappe.get_all('H and T Contract', filters={'old_no': m.parent,'vehicle_type':"BULLOCK CART"}, fields={'name','gang_type','circle','old_no','transporter_name','harvester_code','harvester_name','vehicle_type','transporter_code'})
+        htget = frappe.get_all('H and T Contract', filters={'name': m.parent,'vehicle_type':"BULLOCK CART"}, fields={'name','gang_type','circle','old_no','transporter_name','harvester_code','harvester_name','vehicle_type','transporter_code'})
         
         for j in htget:
             cartinfo = {

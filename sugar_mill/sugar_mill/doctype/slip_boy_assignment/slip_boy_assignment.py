@@ -13,6 +13,7 @@ class SlipBoyAssignment(Document):
 		doc = frappe.db.get_list("User Permission",
 												filters={"user": self.slip_boy,},
 												fields=["for_value","name"],)
+		
 		for d in self.get("village_table_sb"):
 			list.append(d.village)
 		values_in_first_list = set(item['for_value'] for item in doc)
@@ -33,10 +34,13 @@ class SlipBoyAssignment(Document):
 			doc = frappe.db.get_list("User Permission",
 												filters={"user": self.slip_boy, "for_value": m.for_value},
 												fields=["name"],)
+			
 			for k in doc:
-				permission_doc = frappe.get_doc("User Permission", k.name)
-				if permission_doc:
-					permission_doc.delete()
+				if k.name:
+					permission_doc = frappe.get_doc("User Permission", k.name)
+					frappe.msgprint(str(permission_doc))
+					if permission_doc:
+						permission_doc.delete()
 
 		# demo = frappe.db.get_list("User Permission",
 		# 										filters={"user": self.slip_boy ,"allow":"Circle Office"},
@@ -71,10 +75,13 @@ class SlipBoyAssignment(Document):
 												fields=["for_value","name"],)
 		
 		for m in moc:
-			userdoc=frappe.get_doc("User Permission",m.doc)
-			userdoc.delete()
+			
+			if m.name:
+				userdoc=frappe.get_doc("User Permission",m.name)
+				userdoc.delete()
 
-		doc=frappe.get_all("Slip Boy Assignment",filters={"slip_boy":self.slip_boy},fields=["circle_office"])
+
+		doc=frappe.get_all("Slip Boy Assignment",filters={"slip_boy":self.slip_boy ,'name':['!=',self.name]},fields=["circle_office"])
 		
 		for d in doc:
 			user_permission = frappe.new_doc('User Permission')
@@ -83,7 +90,7 @@ class SlipBoyAssignment(Document):
 			user_permission.for_value = d.circle_office
 			user_permission.insert()
 			user_permission.save()
-   
+
 		user_permission = frappe.new_doc('User Permission')
 		user_permission.user = self.slip_boy
 		user_permission.allow = 'Circle Office'

@@ -18,7 +18,7 @@ class CropSampling(Document):
             existing_cropsampling = frappe.get_all('Crop Harvesting', filters={'crop_sample_id': self.name})
             # frappe.msgprint(str(existing_cropsampling))
             if len(existing_cropsampling)==0:
-                
+                # frappe.throw(str(minimum_brix)+"=="+str(self.average_brix)+"=="+str(minimum_pairs)+"=="+str(self.no_of_pairs)+"=="+str(self.plantation_status))
                 if ((float(minimum_brix) <= float(self.average_brix) ) and (float(minimum_pairs)<= float(self.no_of_pairs)) and self.plantation_status == "To Sampling"):
                     doc=frappe.new_doc('Crop Harvesting')
                     doc.brix =self.average_brix
@@ -37,7 +37,7 @@ class CropSampling(Document):
                     self.plantation_status="To Harvesting"
                     frappe.db.set_value("Cane Master", self.id ,"plantation_status", "To Harvesting")
                 else:
-                    frappe.msgprint(f"ऊसची परिपक्वता पूर्ण नाही")
+                    frappe.throw(f"ऊसची परिपक्वता पूर्ण नाही")
                     # frappe.msgprint(f" {self.id}  चा तोडणीसाठीचा कालावधी पूर्ण झालेला नाही.")
             else:
                 frappe.msgprint(f"{self.id} तोडणीसाठी गेला आहे.")
@@ -67,7 +67,8 @@ class CropSampling(Document):
             if self.average_brix < float(minimum_brix):
                 frappe.throw('value should be more than minimum Brix')
         else:
-            frappe.throw('Minimum Brix value is not set or average Brix value is missing')
+            pass
+            # frappe.throw('Minimum Brix value is not set or average Brix value is missing')
 
                 
     @frappe.whitelist()

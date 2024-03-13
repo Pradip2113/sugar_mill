@@ -116,7 +116,8 @@
   "on_hold",
   "hold_type",
   "column_break_59",
-  "release_date"
+  "release_date",
+  "read_only_count"
  ],
  "fields": [
   {
@@ -238,7 +239,8 @@
    "default": "0",
    "fieldname": "is_transporter",
    "fieldtype": "Check",
-   "label": "Transporter"
+   "label": "Transporter",
+   "permlevel": 1
   },
   {
    "fieldname": "column_break_hcoz4",
@@ -277,7 +279,8 @@
    "default": "0",
    "fieldname": "is_harvester",
    "fieldtype": "Check",
-   "label": "Harvester "
+   "label": "Harvester ",
+   "permlevel": 1
   },
   {
    "fieldname": "address_section",
@@ -741,7 +744,8 @@
    "default": "0",
    "fieldname": "drip",
    "fieldtype": "Check",
-   "label": "Drip"
+   "label": "Drip",
+   "permlevel": 1
   },
   {
    "fieldname": "column_break_pyl7q",
@@ -751,7 +755,14 @@
    "default": "0",
    "fieldname": "nursery",
    "fieldtype": "Check",
-   "label": "Nursery"
+   "label": "Nursery",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "read_only_count",
+   "fieldtype": "Int",
+   "label": "Read only count",
+   "read_only": 1
   }
  ],
  "icon": "fa fa-user",
@@ -763,7 +774,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2023-12-28 18:51:42.084463",
+ "modified": "2024-02-26 16:38:52.054683",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Farmer List",
@@ -831,6 +842,7 @@
    "read": 1,
    "report": 1,
    "role": "Agriculture Officer",
+   "select": 1,
    "share": 1,
    "write": 1
   }

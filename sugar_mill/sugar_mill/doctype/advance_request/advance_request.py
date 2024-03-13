@@ -7,7 +7,7 @@ from frappe.model.document import Document
 
 class AdvanceRequest(Document):
 	@frappe.whitelist()
-	def fetch_amount(self):  
+	def fetch_amount(self):
 		doc1 = frappe.get_all('Season Wise Advance Item', 
 				# filters={'season': self.season,'plant':self.plant,'vehicle_type':self.vehicle_type,'gang_type':self.gang_type},
 				fields=["name", "advance","gang_type","vehicle_type","plant","season"])
@@ -16,6 +16,7 @@ class AdvanceRequest(Document):
 				if n.gang_type == d.gang and n.vehicle_type == d.vehicle_type:
 					if n.vehicle_type == 'BULLOCK CART':
 						d.sacn_limit = n.advance * d.vehicle_cart
+						
 					else:
 						d.sacn_limit = n.advance
 					
@@ -26,6 +27,27 @@ class AdvanceRequest(Document):
 						if (doc_if_present[0].parent) != self.name:
 							if (doc_if_present[0].sanction_amount):
 								d.prv_scan_amt= (doc_if_present[0].sanction_amount)
+        
+	@frappe.whitelist()
+	def paid_amount(self):
+		total = 0.0
+		for h in self.items:
+			if h.per_cart_amount >0 and h.vehicle_cart>0:
+				h.sanction_amount = h.per_cart_amount * h.vehicle_cart
+				total = h.sacn_limit - h.sanction_amount - h.prv_scan_amt
+				h.bal_amt = total
+			
+			
+   
+	@frappe.whitelist()
+	def before_save(self):
+		# self.auto_100_row_add_in_child_table()
+  
+		if self.items:
+			for k in self.items:
+				# k.prv_scan_amt  = k.prv_scan_amt  + k.sanction_amount
+				if k.sacn_limit  < k.prv_scan_amt :
+					frappe.throw("Exceeding the Limit ......")
 						
      
      
@@ -58,22 +80,7 @@ class AdvanceRequest(Document):
 		# 			frappe.msgprint(str(n.advance))
 
     
-	@frappe.whitelist()
-	def paid_amount(self):
-		total = 0.0
-		for h in self.items:
-			total = h.sacn_limit - h.sanction_amount - h.prv_scan_amt
-			h.bal_amt = total
-   
-	@frappe.whitelist()
-	def before_save(self):
-		# self.auto_100_row_add_in_child_table()
-  
-		if self.items:
-			for k in self.items:
-				# k.prv_scan_amt  = k.prv_scan_amt  + k.sanction_amount
-				if k.sacn_limit  < k.prv_scan_amt :
-					frappe.throw("Exceeding the Limit ......")
+
     
     
     

@@ -287,6 +287,7 @@ frappe.ui.form.on("Agriculture Development Item",
         frappe.model.set_value(cdt, cdn, 'total_weight', result);
     }
 });
+
 frappe.ui.form.on("Agriculture Development Item", 
     "pre_earthing", function(frm, cdt, cdn) {
      var d = locals[cdt][cdn];
@@ -294,28 +295,36 @@ frappe.ui.form.on("Agriculture Development Item",
         var result = ((d.qty * d.weight_per_unit)).toFixed(2);
         frappe.model.set_value(cdt, cdn, 'total_weight', result);
     }
-});frappe.ui.form.on("Agriculture Development Item", 
+});
+
+frappe.ui.form.on("Agriculture Development Item", 
 "earth", function(frm, cdt, cdn) {
  var d = locals[cdt][cdn];
  if(d.qty >= 0 && d.weight_per_unit >= 0){
     var result = ((d.qty * d.weight_per_unit)).toFixed(2);
     frappe.model.set_value(cdt, cdn, 'total_weight', result);
 }
-});frappe.ui.form.on("Agriculture Development Item", 
+});
+
+frappe.ui.form.on("Agriculture Development Item", 
 "rainy", function(frm, cdt, cdn) {
  var d = locals[cdt][cdn];
  if(d.qty >= 0 && d.weight_per_unit >= 0){
     var result = ((d.qty * d.weight_per_unit)).toFixed(2);
     frappe.model.set_value(cdt, cdn, 'total_weight', result);
 }
-});frappe.ui.form.on("Agriculture Development Item", 
+});
+
+frappe.ui.form.on("Agriculture Development Item", 
 "ratoon_1", function(frm, cdt, cdn) {
  var d = locals[cdt][cdn];
  if(d.qty >= 0 && d.weight_per_unit >= 0){
     var result = ((d.qty * d.weight_per_unit)).toFixed(2);
     frappe.model.set_value(cdt, cdn, 'total_weight', result);
 }
-});frappe.ui.form.on("Agriculture Development Item", 
+});
+
+frappe.ui.form.on("Agriculture Development Item", 
 "ratoon_2", function(frm, cdt, cdn) {
  var d = locals[cdt][cdn];
  if(d.qty >= 0 && d.weight_per_unit >= 0){
@@ -332,6 +341,7 @@ frappe.ui.form.on("Agriculture Development Item2",
         frappe.model.set_value(cdt, cdn, 'amount', result);
     }
 });
+
 frappe.ui.form.on("Agriculture Development Item2", 
     "rate", function(frm, cdt, cdn) {
      var d = locals[cdt][cdn];
@@ -340,6 +350,36 @@ frappe.ui.form.on("Agriculture Development Item2",
         frappe.model.set_value(cdt, cdn, 'amount', result);
     }
 });
+frappe.ui.form.on('Agriculture Development Item2', {
+	item_code: function(frm) {
+		// frm.clear_table("employee_list");
+		// frm.refresh_field('employee_list');
+		frm.call({
+			method:'set_price_in_child_table',
+			doc:frm.doc
+		})
+	}
+});
+// frappe.ui.form.on("Agriculture Development Item2", 
+//     "item_code", function(frm, cdt, cdn) {
+//      var d = locals[cdt][cdn];
+//      var args = {
+//         item_code: 'item_code',
+//     };
+
+//     frm.call({
+//         method:'get_item_pricelist_rate',
+//         args: args,
+//         doc:frm.doc,
+//         callback: function(r) {
+//             if (r.message) {
+//                 var k = r.message;
+//                 frappe.model.set_value(cdt, cdn, 'rate', k);
+//             }
+//         }
+//     })
+
+// });
 
 
 frappe.ui.form.on("Agriculture Development", {

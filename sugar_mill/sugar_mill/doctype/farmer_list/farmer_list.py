@@ -145,7 +145,13 @@ def vendor_code(docname):
         # frappe.enqueue(reload_doc, queue='default', timeout=1)
         return "Field value updated"
  
-	
+@frappe.whitelist()
+def role():
+    list=frappe.get_all("Has Role",filters={"parenttype": "User", "parent": frappe.session.user},fields=["role"],)
+    if list:
+        return list[0].role
+
+
   
 	# @frappe.whitelist()
 	# def aadhaar_number_vali(self):
@@ -183,10 +189,27 @@ def vendor_code(docname):
 	# 	frappe.db.set_value("Customer", self.name, "pincode", self.pin_code)
 		
 		
+@frappe.whitelist()
+def filterfarmerlist(village, name):
+    try:
+        village = str(village) + '%'
+        name = '%' + str(name) + '%'
+        data=[]
+        data = frappe.db.sql(
+            '''SELECT supplier_name, village, name, circle_office, existing_supplier_code, workflow_state
+               FROM `tabFarmer List`
+               WHERE village LIKE %s
+               AND supplier_name LIKE %s 
+               LIMIT 20
+            ''', (village, name), as_dict=True)
 
-
-		
-		
+        if data is not None:
+            return data
+        else:
+            return []
+    except Exception as e:
+        frappe.log_error("Error in filterfarmerlist: " + str(e))
+        return []
 
 
 	

@@ -6,7 +6,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "contract_id",
+  "code_no",
   "transporter_code",
   "name1",
   "vehicle_cart",
@@ -15,6 +15,7 @@
   "column_break_rjbce",
   "sacn_limit",
   "prv_scan_amt",
+  "per_cart_amount",
   "sanction_amount",
   "bal_amt",
   "circle",
@@ -45,7 +46,8 @@
    "fieldname": "vehicle_type",
    "fieldtype": "Link",
    "label": "vehicle type",
-   "options": "Vehicle Type"
+   "options": "Vehicle Type",
+   "read_only": 1
   },
   {
    "columns": 1,
@@ -53,7 +55,8 @@
    "fieldname": "gang",
    "fieldtype": "Link",
    "label": "Gang",
-   "options": "Gang Type"
+   "options": "Gang Type",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_rjbce",
@@ -65,7 +68,8 @@
    "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Sacn Limit",
-   "precision": "2"
+   "precision": "2",
+   "read_only": 1
   },
   {
    "columns": 1,
@@ -73,21 +77,24 @@
    "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Prv Scan Amt",
-   "precision": "2"
+   "precision": "2",
+   "read_only": 1
   },
   {
    "fieldname": "sanction_amount",
    "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Sanction Amount",
-   "precision": "2"
+   "label": "Total Sanction Amount",
+   "precision": "2",
+   "read_only": 1
   },
   {
    "columns": 1,
    "fieldname": "bal_amt",
    "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Bal Amt"
+   "label": "Bal Amt",
+   "read_only": 1
   },
   {
    "columns": 1,
@@ -119,18 +126,25 @@
   },
   {
    "columns": 1,
-   "fieldname": "contract_id",
+   "fieldname": "code_no",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Code No",
    "options": "H and T Contract",
+   "reqd": 1
+  },
+  {
+   "fieldname": "per_cart_amount",
+   "fieldtype": "Float",
+   "label": "Per Vehicle",
+   "precision": "2",
    "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-09-13 16:07:32.248264",
+ "modified": "2024-03-11 14:58:46.830052",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Advance Request item",

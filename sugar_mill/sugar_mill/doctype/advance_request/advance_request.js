@@ -2,11 +2,13 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Advance Request item', {
-	refresh: function(frm) {
+	refresh: function(frm,cdt,cdn) {
+		var d = locals[cdt][cdn];
 			frm.set_query("code_no", function() { // Replace with the name of the link field
 				return {
 					filters: [
-						["H and T Contract", "season", '=', frm.doc.season] // Replace with your actual filter criteria
+						// ["H and T Contract", "season", '=', frm.doc.season]
+						["H and T Contract", "old_no", '=', d.code_no] // Replace with your actual filter criteria
 					]
 				};
 			});
@@ -34,7 +36,7 @@ frappe.ui.form.on('Advance Request item', {
 	// })
 	
 	frappe.ui.form.on('Advance Request item', {
-		sanction_amount: function(frm) {
+		per_cart_amount: function(frm) {
 			frm.call({
 				method:'paid_amount',//function name defined in python
 				doc: frm.doc, //current document

@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_import": 1,
- "autoname": "format:{ht_no}",
+ "autoname": "format:{season}-{ht_no}",
  "creation": "2023-04-08 17:52:36.969389",
  "default_view": "List",
  "doctype": "DocType",
@@ -193,7 +193,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-28 12:57:58.001508",
+ "modified": "2024-02-29 15:38:43.778297",
  "modified_by": "Administrator",
  "module": "Sugar Mill",
  "name": "Vehicle Registration",
